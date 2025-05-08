@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['macro_0',['Exceptions macro',['../group__EXCEPTIONS__MACRO.html',1,'']]],
+  ['macros_1',['Macros',['../Basics.html#autotoc_md0',1,'']]],
+  ['macros_2',['Custom classes macros',['../group__CUSTOM__CLASSES__MACRO.html',1,'']]],
+  ['main_20api_3',['Main API',['../Basics.html#basics_MainApi',1,'']]],
+  ['main_20example_4',['Main Example',['../old_example_main.html',1,'old_examples_page']]],
+  ['main_20file_5',['The main file',['../old_examples_page.html#main_example',1,'']]],
+  ['management_6',['Example 05: Classes Management',['../old_example_05_classes_management.html',1,'old_examples_page']]],
+  ['management_7',['Classes management',['../AdvancedAPI.html#advanced_ClassesManagement',1,'']]],
+  ['matrix3x3_8',['Matrix3x3',['../structBNM_1_1Structures_1_1Unity_1_1Matrix3x3.html',1,'BNM::Structures::Unity']]],
+  ['matrix4x4_9',['Matrix4x4',['../structBNM_1_1Structures_1_1Unity_1_1Matrix4x4.html',1,'BNM::Structures::Unity']]],
+  ['message_10',['Message',['../structBNM_1_1Exception.html#a4026dd9a7ff9ae6253157a79fb76614c',1,'BNM::Exception']]],
+  ['method_11',['Method',['../structBNM_1_1Method.html',1,'BNM::Method&lt; Ret &gt;'],['../structBNM_1_1Method.html#a455130072bf291ff47bbaf5c462d55d7',1,'BNM::Method::Method() noexcept=default'],['../structBNM_1_1Method.html#ae0cc91460357170a56ca238a57448768',1,'BNM::Method::Method(const Method&lt; OtherType &gt; &amp;other)'],['../structBNM_1_1Method.html#a1973b52bb8c25fa4b60bb29f45d0ab85',1,'BNM::Method::Method(const IL2CPP::MethodInfo *info)'],['../structBNM_1_1Method.html#a9f15654d085dee511704b6b28f5c7b55',1,'BNM::Method::Method(const IL2CPP::Il2CppReflectionMethod *reflectionMethod)'],['../structBNM_1_1Method.html#aabdfbb2c7687c56bf08c80d2c301c65e',1,'BNM::Method::Method(const MethodBase &amp;other)']]],
+  ['methodbase_12',['MethodBase',['../structBNM_1_1MethodBase.html',1,'BNM::MethodBase'],['../structBNM_1_1MethodBase.html#a35105e097a1e6d566365e08787d28a9a',1,'BNM::MethodBase::MethodBase()=default'],['../structBNM_1_1MethodBase.html#ae18db4e580a3567bb99f4712e70741c0',1,'BNM::MethodBase::MethodBase(const MethodBase &amp;other)=default'],['../structBNM_1_1MethodBase.html#a69529f12f5b06ebc6a4df18e905541cd',1,'BNM::MethodBase::MethodBase(const IL2CPP::MethodInfo *info)'],['../structBNM_1_1MethodBase.html#a1120e76064a90e0d581040a2df184a14',1,'BNM::MethodBase::MethodBase(const IL2CPP::Il2CppReflectionMethod *reflectionMethod)']]],
+  ['methods_13',['methods',['../Basics.html#method_Generics',1,'- Generic methods'],['../AdvancedAPI.html#hookMethods_Ex',1,'3. Hook classes&apos; methods'],['../AdvancedAPI.html#override_Ex',1,'4. Override methods']]],
+  ['methods_20to_20class_14',['2. Add methods to class',['../AdvancedAPI.html#addMethods_Ex',1,'']]],
+  ['modifier_15',['Modifier',['../structBNM_1_1CompileTimeClassBuilder.html#a39f85030f3a2ebf0ebdbd9d7efa78a21',1,'BNM::CompileTimeClassBuilder']]],
+  ['mono_20related_20structs_16',['Unity and mono related structs',['../Basics.html#basics_UnityMono',1,'']]],
+  ['mono_20structures_17',['2. Mono structures',['../Basics.html#mono_UnityMono',1,'']]],
+  ['monobehaviour_18',['MonoBehaviour',['../structBNM_1_1UnityEngine_1_1MonoBehaviour.html',1,'BNM::UnityEngine']]],
+  ['monobehaviour_20class_19',['1. Simple MonoBehaviour class',['../AdvancedAPI.html#MonoBehaviour_Ex',1,'']]],
+  ['monotype_20',['MonoType',['../namespaceBNM.html#a44e13e19f30fd1ef2c62e37bddeb9954',1,'BNM']]],
+  ['multicastdelegate_21',['MulticastDelegate',['../structBNM_1_1MulticastDelegate.html',1,'BNM']]],
+  ['multicastdelegate_3c_20void_20_3e_22',['MulticastDelegate&lt; void &gt;',['../structBNM_1_1MulticastDelegate.html',1,'BNM']]],
+  ['multicastdelegatebase_23',['MulticastDelegateBase',['../structBNM_1_1MulticastDelegateBase.html',1,'BNM']]]
+];

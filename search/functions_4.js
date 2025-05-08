@@ -1,0 +1,7 @@
+var searchData=
+[
+  ['empty_0',['Empty',['../structBNM_1_1Structures_1_1Mono_1_1String.html#a3a9b7dfbde5067f55db7bb2681e80abe',1,'BNM::Structures::Mono::String::Empty()'],['../structBNM_1_1Structures_1_1Mono_1_1Array.html#a0faacf947c0db99f28d5e388d796219b',1,'BNM::Structures::Mono::Array::Empty()']]],
+  ['event_1',['Event',['../structBNM_1_1Event.html#a051099e6ffb0240cfa18f2543288032d',1,'BNM::Event::Event()=default'],['../structBNM_1_1Event.html#a9a96ec235a628106d9d24bb951ba5cfd',1,'BNM::Event::Event(const Event&lt; OtherType &gt; &amp;other)'],['../structBNM_1_1Event.html#a46006e8eda35a9448909904d02090492',1,'BNM::Event::Event(const IL2CPP::EventInfo *info)'],['../structBNM_1_1Event.html#a7705b9685e374dada7fb5a7c37fd686d',1,'BNM::Event::Event(const EventBase &amp;other)']]],
+  ['eventbase_2',['EventBase',['../structBNM_1_1EventBase.html#a652272194d9860af55918f2f39894eed',1,'BNM::EventBase::EventBase() noexcept=default'],['../structBNM_1_1EventBase.html#a41a434b9f972de647674a9f544471d0e',1,'BNM::EventBase::EventBase(const EventBase &amp;other)=default'],['../structBNM_1_1EventBase.html#a0edf92166e27ef9a710824a304b61381',1,'BNM::EventBase::EventBase(const IL2CPP::EventInfo *info)']]],
+  ['exception_3',['Exception',['../structBNM_1_1Exception.html#a6b6bd37e03c6f8d76d64aad3b7d30f65',1,'BNM::Exception::Exception()=default'],['../structBNM_1_1Exception.html#a7d079c359ecd5b58b5ca226a12f662c6',1,'BNM::Exception::Exception(BNM::IL2CPP::Il2CppException *exception)']]]
+];

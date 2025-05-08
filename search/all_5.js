@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['action_0',['Action',['../structBNM_1_1Structures_1_1Mono_1_1Action.html',1,'BNM::Structures::Mono']]],
+  ['action_20unityaction_1',['- Action/UnityAction',['../Basics.html#mono_action_UnityMono',1,'']]],
+  ['add_2',['Add',['../structBNM_1_1Structures_1_1Mono_1_1List.html#a03fbff266e4631e2255e3367fcca2f62',1,'BNM::Structures::Mono::List::Add()'],['../structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ad236c29e712fd546088a6880e2b7f769',1,'BNM::Structures::Mono::Dictionary::Add()'],['../structBNM_1_1MulticastDelegateBase.html#a247b062b9050f8f659ae54725a8dd236',1,'BNM::MulticastDelegateBase::Add()'],['../structBNM_1_1Event.html#a389f653da5698d9b0e69e3c1776e66e5',1,'BNM::Event::Add()']]],
+  ['add_20methods_20to_20class_3',['2. Add methods to class',['../AdvancedAPI.html#addMethods_Ex',1,'']]],
+  ['addlistener_4',['AddListener',['../structBNM_1_1UnityEngine_1_1UnityEvent.html#af90e51857803efc09978ad66905bd795',1,'BNM::UnityEngine::UnityEvent']]],
+  ['addonloadedevent_5',['AddOnLoadedEvent',['../namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab',1,'BNM::Loading']]],
+  ['advanced_20api_6',['Advanced API',['../AdvancedAPI.html',1,'']]],
+  ['advanced_20examples_7',['Advanced Examples',['../old_examples_page.html#advanced_examples',1,'']]],
+  ['alive_8',['Alive',['../structBNM_1_1Class.html#a46e9f417b36b21a51d87bb403edefe25',1,'BNM::Class::Alive()'],['../structBNM_1_1UnityEngine_1_1Object.html#a61d61a3f485eddd9c65459064407b823',1,'BNM::UnityEngine::Object::Alive()']]],
+  ['allocate_9',['Allocate',['../namespaceBNM.html#af32e3316d80378d64f652fae1ea7a1cd',1,'BNM']]],
+  ['allowlateinithook_10',['AllowLateInitHook',['../namespaceBNM_1_1Loading.html#a9a98ca9ff7b3852a46cfacb3dcd24078',1,'BNM::Loading']]],
+  ['and_20mono_20related_20structs_11',['Unity and mono related structs',['../Basics.html#basics_UnityMono',1,'']]],
+  ['api_12',['API',['../AdvancedAPI.html',1,'Advanced API'],['../Basics.html#autotoc_md1',1,'API'],['../Basics.html#basics_MainApi',1,'Main API']]],
+  ['argumentcache_13',['ArgumentCache',['../structBNM_1_1UnityEngine_1_1ArgumentCache.html',1,'BNM::UnityEngine']]],
+  ['array_14',['Array',['../Basics.html#mono_array_UnityMono',1,'- Array'],['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono::Array&lt; T &gt;'],['../structBNM_1_1Structures_1_1Mono_1_1Array.html#a9e70d2933b202cdebdd77583da20bcc8',1,'BNM::Structures::Mono::Array::Array()']]],
+  ['array_3c_20bnm_3a_3astructures_3a_3amono_3a_3adictionary_3a_3aentry_20_3e_15',['Array&lt; BNM::Structures::Mono::Dictionary::Entry &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20bnm_3a_3aunityengine_3a_3ainvokablecallbase_20_2a_20_3e_16',['Array&lt; BNM::UnityEngine::InvokableCallBase * &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20bnm_3a_3aunityengine_3a_3apersistentcall_20_2a_20_3e_17',['Array&lt; BNM::UnityEngine::PersistentCall * &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20il2cpp_3a_3ail2cppobject_20_2a_20_3e_18',['Array&lt; IL2CPP::Il2CppObject * &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20int_20_3e_19',['Array&lt; int &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20tkey_20_3e_20',['Array&lt; TKey &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['array_3c_20tvalue_20_3e_21',['Array&lt; TValue &gt;',['../structBNM_1_1Structures_1_1Mono_1_1Array.html',1,'BNM::Structures::Mono']]],
+  ['asyncoperation_22',['AsyncOperation',['../structBNM_1_1Coroutine_1_1AsyncOperation.html',1,'BNM::Coroutine']]],
+  ['at_23',['At',['../structBNM_1_1Structures_1_1Mono_1_1Array.html#a81dc133698054f408ef768ebeed6f7d7',1,'BNM::Structures::Mono::Array::At()'],['../structBNM_1_1Structures_1_1Mono_1_1List.html#a9f705fe06348b8f13148361d55541179',1,'BNM::Structures::Mono::List::At()']]],
+  ['attachil2cpp_24',['AttachIl2Cpp',['../namespaceBNM.html#ac8b332009893008a129d571d9bcb4775',1,'BNM']]]
+];

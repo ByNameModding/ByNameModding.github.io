@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['empty_0',['Empty',['../structBNM_1_1Structures_1_1Mono_1_1String.html#a3a9b7dfbde5067f55db7bb2681e80abe',1,'BNM::Structures::Mono::String::Empty()'],['../structBNM_1_1Structures_1_1Mono_1_1Array.html#a0faacf947c0db99f28d5e388d796219b',1,'BNM::Structures::Mono::Array::Empty()']]],
+  ['entry_1',['Entry',['../structBNM_1_1Structures_1_1Mono_1_1Dictionary_1_1Entry.html',1,'BNM::Structures::Mono::Dictionary']]],
+  ['enumerator_2',['Enumerator',['../structBNM_1_1Structures_1_1Mono_1_1List_1_1Enumerator.html',1,'BNM::Structures::Mono::List']]],
+  ['event_3',['Event',['../structBNM_1_1Event.html',1,'BNM::Event&lt; Ret, Parameters &gt;'],['../structBNM_1_1Event.html#a051099e6ffb0240cfa18f2543288032d',1,'BNM::Event::Event()=default'],['../structBNM_1_1Event.html#a9a96ec235a628106d9d24bb951ba5cfd',1,'BNM::Event::Event(const Event&lt; OtherType &gt; &amp;other)'],['../structBNM_1_1Event.html#a46006e8eda35a9448909904d02090492',1,'BNM::Event::Event(const IL2CPP::EventInfo *info)'],['../structBNM_1_1Event.html#a7705b9685e374dada7fb5a7c37fd686d',1,'BNM::Event::Event(const EventBase &amp;other)']]],
+  ['event_4',['- Unity event',['../Basics.html#unity_action_UnityMono',1,'']]],
+  ['eventbase_5',['EventBase',['../structBNM_1_1EventBase.html',1,'BNM::EventBase'],['../structBNM_1_1EventBase.html#a652272194d9860af55918f2f39894eed',1,'BNM::EventBase::EventBase() noexcept=default'],['../structBNM_1_1EventBase.html#a41a434b9f972de647674a9f544471d0e',1,'BNM::EventBase::EventBase(const EventBase &amp;other)=default'],['../structBNM_1_1EventBase.html#a0edf92166e27ef9a710824a304b61381',1,'BNM::EventBase::EventBase(const IL2CPP::EventInfo *info)']]],
+  ['example_6',['Main Example',['../old_example_main.html',1,'old_examples_page']]],
+  ['example_7',['Simple coroutine example',['../AdvancedAPI.html#autotoc_md3',1,'']]],
+  ['example_2001_3a_20basics_8',['Example 01: Basics',['../old_example_01_basics.html',1,'old_examples_page']]],
+  ['example_2002_3a_20other_20structures_9',['Example 02: Other Structures',['../old_example_02_other_structures.html',1,'old_examples_page']]],
+  ['example_2003_3a_20generics_10',['Example 03: Generics',['../old_example_03_generic.html',1,'old_examples_page']]],
+  ['example_2004_3a_20compile_20time_20classes_11',['Example 04: Compile-time Classes',['../old_example_04_compile_time_classes.html',1,'old_examples_page']]],
+  ['example_2005_3a_20classes_20management_12',['Example 05: Classes Management',['../old_example_05_classes_management.html',1,'old_examples_page']]],
+  ['example_2006_3a_20coroutine_13',['Example 06: Coroutine',['../old_example_06_coroutine.html',1,'old_examples_page']]],
+  ['example_2007_3a_20custom_20finder_14',['Example 07: Custom Finder',['../old_example_07_custom_finder.html',1,'old_examples_page']]],
+  ['example_2008_3a_20exceptions_15',['Example 08: Exceptions',['../old_example_08_exceptions.html',1,'old_examples_page']]],
+  ['examples_16',['Examples',['../old_examples_page.html#advanced_examples',1,'Advanced Examples'],['../old_examples_page.html#old_basic_examples',1,'Basic Examples'],['../AdvancedAPI.html#autotoc_md2',1,'Examples']]],
+  ['examples_17',['Old examples',['../old_examples_page.html',1,'']]],
+  ['exception_18',['Exception',['../structBNM_1_1Exception.html',1,'BNM::Exception'],['../structBNM_1_1Exception.html#a6b6bd37e03c6f8d76d64aad3b7d30f65',1,'BNM::Exception::Exception()=default'],['../structBNM_1_1Exception.html#a7d079c359ecd5b58b5ca226a12f662c6',1,'BNM::Exception::Exception(BNM::IL2CPP::Il2CppException *exception)']]],
+  ['exceptions_19',['Exceptions',['../old_example_08_exceptions.html',1,'Example 08: Exceptions'],['../Basics.html#basics_Exceptions',1,'Exceptions']]],
+  ['exceptions_20macro_20',['Exceptions macro',['../group__EXCEPTIONS__MACRO.html',1,'']]]
+];
