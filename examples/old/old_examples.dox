@@ -1,0 +1,97 @@
+/**
+    @page old_examples_page Old examples
+    
+
+    This section contains all outdated examples from BNM v1.0 - v2.2.8.
+    @warning They won't be updated!
+
+    @section main_example The main file
+    The main file that loads other examples: 
+    @subpage old_example_main
+
+    @section old_basic_examples Basic Examples
+    These examples cover the most often used BNM's API:<br>
+    @subpage old_example_01_basics <br>
+    @subpage old_example_02_other_structures <br>
+    @subpage old_example_03_generic <br>
+    @subpage old_example_08_exceptions <br>
+  
+    @section advanced_examples Advanced Examples
+    More advanced BNM's API:<br>
+    @subpage old_example_04_compile_time_classes <br>
+    @subpage old_example_05_classes_management <br>
+    @subpage old_example_06_coroutine <br>
+  
+    @section old_special_topics Other
+    Examples focusing on other features: <br>
+    @subpage old_example_07_custom_finder <br>
+*/
+
+/**
+    @page old_example_01_basics Example 01: Basics
+
+    This example shows basic BNM's API.
+
+    @include Old_Example_01_Basics.cpp
+*/
+
+/**
+    @page old_example_02_other_structures Example 02: Other Structures
+
+    It shows how to work with different Unity and Mono structures.
+    
+    @include Old_Example_02_OtherStructures.cpp
+*/
+
+/**
+    @page old_example_03_generic Example 03: Generics
+  
+    It shows how to work with generic classes and methods.
+
+    @include Old_Example_03_Generic.cpp
+*/
+
+/**
+    @page old_example_04_compile_time_classes Example 04: Compile-time Classes
+
+    It shows how to use compile-time classes.
+
+    @include Old_Example_04_CompileTimeClasses.cpp
+*/
+
+/**
+    @page old_example_05_classes_management Example 05: Classes Management
+
+    It shows how to use classes management.
+
+    @include Old_Example_05_ClassesManagement.cpp
+*/
+
+/**
+    @page old_example_06_coroutine Example 06: Coroutine
+
+    It shows how to use coroutines.
+
+    @include Old_Example_06_Coroutine.cpp
+*/
+
+/**
+    @page old_example_07_custom_finder Example 07: Custom Finder
+
+    It shows how to use custom finder with [KittyMemory](https://github.com/MJx0/KittyMemory) as an example.
+
+    @include Old_Example_07_CustomFinder.cpp
+*/
+
+/**
+    @page old_example_08_exceptions Example 08: Exceptions
+
+    It shows how to handle il2cpp exceptions.
+    
+    @include Old_Example_08_Exceptions.cpp
+*/
+
+/**
+    @page old_example_main Main Example
+    @include Old_Example_Main.cpp
+*/
