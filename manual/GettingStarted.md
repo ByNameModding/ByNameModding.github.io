@@ -15,7 +15,7 @@
     include $(BNM_PATH)/Android.mk
     ~~~~~~~~~~~~~
     CMake (CMakeLists.txt):
-    ~~~~~~~~~~~~~{CMakeLists.txt}
+    ~~~~~~~~~~~~~
     add_subdirectory(path/to/ByNameModding EXCLUDE_FROM_ALL)
     get_property(BNM_INCLUDE_DIRECTORIES TARGET BNM PROPERTY BNM_INCLUDE_DIRECTORIES)
 
