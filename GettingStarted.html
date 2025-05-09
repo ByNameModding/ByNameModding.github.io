@@ -120,24 +120,23 @@ $(function(){initNavTree('GettingStarted.html',''); initResizable(true); });
 <div class="line"># ...</div>
 <div class="line">include $(CLEAR_VARS)</div>
 <div class="line">include $(BNM_PATH)/Android.mk</div>
-</div><!-- fragment --> CMake (CMakeLists.txt): <div class="fragment"><div class="line">{CMakeLists.txt} </div>
-<div class="line">    add_subdirectory(path/to/ByNameModding EXCLUDE_FROM_ALL)</div>
-<div class="line">    get_property(BNM_INCLUDE_DIRECTORIES TARGET BNM PROPERTY BNM_INCLUDE_DIRECTORIES)</div>
+</div><!-- fragment --> CMake (CMakeLists.txt): <div class="fragment"><div class="line">add_subdirectory(path/to/ByNameModding EXCLUDE_FROM_ALL)</div>
+<div class="line">get_property(BNM_INCLUDE_DIRECTORIES TARGET BNM PROPERTY BNM_INCLUDE_DIRECTORIES)</div>
 <div class="line"> </div>
+<div class="line"># ...</div>
+<div class="line"> </div>
+<div class="line">target_include_directories(</div>
+<div class="line">    # Your lib name</div>
+<div class="line">    PUBLIC</div>
+<div class="line">    ${BNM_INCLUDE_DIRECTORIES}</div>
 <div class="line">    # ...</div>
-<div class="line"> </div>
-<div class="line">    target_include_directories(</div>
-<div class="line">        # Your lib name</div>
-<div class="line">        PUBLIC</div>
-<div class="line">        ${BNM_INCLUDE_DIRECTORIES}</div>
-<div class="line">        # ...</div>
-<div class="line">    )</div>
-<div class="line">    target_link_libraries(</div>
-<div class="line">        # Your lib name</div>
-<div class="line">        PUBLIC</div>
-<div class="line">        BNM</div>
-<div class="line">        # ...</div>
-<div class="line">    )</div>
+<div class="line">)</div>
+<div class="line">target_link_libraries(</div>
+<div class="line">    # Your lib name</div>
+<div class="line">    PUBLIC</div>
+<div class="line">    BNM</div>
+<div class="line">    # ...</div>
+<div class="line">)</div>
 </div><!-- fragment --></li>
 <li>Get Unity version of your target app and change <code>UNITY_VER</code> in GlobalSettings.hpp.</li>
 <li>Setup your desired hooking software in GlobalSettings.hpp.</li>
