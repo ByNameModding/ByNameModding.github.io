@@ -8,6 +8,7 @@ var namespaceBNM_1_1Structures_1_1Unity =
     [ "Quaternion", "structBNM_1_1Structures_1_1Unity_1_1Quaternion.html", null ],
     [ "Ray", "structBNM_1_1Structures_1_1Unity_1_1Ray.html", null ],
     [ "RaycastHit", "structBNM_1_1Structures_1_1Unity_1_1RaycastHit.html", null ],
+    [ "RaycastHit2D", "structBNM_1_1Structures_1_1Unity_1_1RaycastHit2D.html", null ],
     [ "Rect", "structBNM_1_1Structures_1_1Unity_1_1Rect.html", null ],
     [ "Vector2", "structBNM_1_1Structures_1_1Unity_1_1Vector2.html", null ],
     [ "Vector2Int", "structBNM_1_1Structures_1_1Unity_1_1Vector2Int.html", null ],

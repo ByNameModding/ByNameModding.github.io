@@ -1,5 +1,8 @@
 var namespaceBNM =
 [
+    [ "ClassesManagement", "namespaceBNM_1_1ClassesManagement.html", [
+      [ "ProcessClassRuntime", "namespaceBNM_1_1ClassesManagement.html#a634ca3cd323a89650a24d1bf11bf7641", null ]
+    ] ],
     [ "Coroutine", "namespaceBNM_1_1Coroutine.html", "namespaceBNM_1_1Coroutine" ],
     [ "Defaults", "namespaceBNM_1_1Defaults.html", "namespaceBNM_1_1Defaults" ],
     [ "Loading", "namespaceBNM_1_1Loading.html", [

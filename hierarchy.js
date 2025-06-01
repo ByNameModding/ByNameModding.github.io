@@ -73,6 +73,7 @@ var hierarchy =
     [ "BNM::Structures::Unity::Quaternion", "structBNM_1_1Structures_1_1Unity_1_1Quaternion.html", null ],
     [ "BNM::Structures::Unity::Ray", "structBNM_1_1Structures_1_1Unity_1_1Ray.html", null ],
     [ "BNM::Structures::Unity::RaycastHit", "structBNM_1_1Structures_1_1Unity_1_1RaycastHit.html", null ],
+    [ "BNM::Structures::Unity::RaycastHit2D", "structBNM_1_1Structures_1_1Unity_1_1RaycastHit2D.html", null ],
     [ "BNM::Structures::Unity::Rect", "structBNM_1_1Structures_1_1Unity_1_1Rect.html", null ],
     [ "BNM::Structures::Unity::Vector2", "structBNM_1_1Structures_1_1Unity_1_1Vector2.html", null ],
     [ "BNM::Structures::Unity::Vector2Int", "structBNM_1_1Structures_1_1Unity_1_1Vector2Int.html", null ],
