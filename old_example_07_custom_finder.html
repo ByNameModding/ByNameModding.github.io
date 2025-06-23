@@ -108,7 +108,41 @@ $(function(){initNavTree('old_example_07_custom_finder.html',''); initResizable(
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to use custom finder with <a href="https://github.com/MJx0/KittyMemory">KittyMemory</a> as an example.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/Loading.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// The example requires KittyMemory to work. After adding it, uncomment code.</span></div>
+<div class="line"><span class="comment">// https://github.com/MJx0/KittyMemory</span><span class="comment"></span></div>
+<div class="line"><span class="comment">//! #include &quot;KittyMemory.h&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// An example of replacing a method for searching for methods using KittyMemory.</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">/**</span></div>
+<div class="line"><span class="comment">ElfScanner g_il2cppELF{};</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">void *KittyMemoryFinder(const char *name, void *data) {</span></div>
+<div class="line"><span class="comment">    auto &amp;scanner = *(ElfScanner *) data;</span></div>
+<div class="line"><span class="comment">    // auto &amp;scanner = g_il2cppELF;</span></div>
+<div class="line"><span class="comment">    return (void *) scanner.findSymbol(name);</span></div>
+<div class="line"><span class="comment">}</span></div>
+<div class="line"><span class="comment">**/</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> Example_07() {</div>
+<div class="line">    <span class="comment">// Tells BNM to use KittyMemoryFinder in place of BNM_dlsym.</span><span class="comment"></span></div>
+<div class="line"><span class="comment">    //! BNM::Loading::SetMethodFinder(KittyMemoryFinder, (void *) &amp;g_il2cppELF);</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// What if load happens later.</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#a9a98ca9ff7b3852a46cfacb3dcd24078">BNM::Loading::AllowLateInitHook</a>();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Set g_il2cppELF in any way.</span></div>
+<div class="line">    <span class="comment">// g_il2cppELF = ...;</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Try load BNM</span></div>
+<div class="line">    <span class="keyword">auto</span> result = <a class="code hl_function" href="namespaceBNM_1_1Loading.html#a7a6bc4dd7d3e72ddd8e75daf123f7d05">BNM::Loading::TryLoadByUsersFinder</a>();</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;07: %d&quot;</span>, (<span class="keywordtype">int</span>) result);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceBNM_1_1Loading_html_a7a6bc4dd7d3e72ddd8e75daf123f7d05"><div class="ttname"><a href="namespaceBNM_1_1Loading.html#a7a6bc4dd7d3e72ddd8e75daf123f7d05">BNM::Loading::TryLoadByUsersFinder</a></div><div class="ttdeci">bool TryLoadByUsersFinder()</div><div class="ttdoc">Try load BNM using custom method finder.</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Loading_html_a9a98ca9ff7b3852a46cfacb3dcd24078"><div class="ttname"><a href="namespaceBNM_1_1Loading.html#a9a98ca9ff7b3852a46cfacb3dcd24078">BNM::Loading::AllowLateInitHook</a></div><div class="ttdeci">void AllowLateInitHook()</div><div class="ttdoc">Allow BNM to load at any game state.</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

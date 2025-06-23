@@ -107,7 +107,46 @@ $(function(){initNavTree('old_example_main.html',''); initResizable(true); });
   <div class="headertitle"><div class="title">Main Example</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="textblock"><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;jni.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Loading.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_01();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_02();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_03();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_04();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_05();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_06();</div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_08();</div>
+<div class="line"><span class="keywordtype">void</span> Example_07();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">//! BNM has many features.</span></div>
+<div class="line"><span class="comment">//! The most basic ones are described in the examples.</span></div>
+<div class="line"><span class="comment">//! You can find out the rest in best example/documentation ever - source code.</span></div>
+<div class="line"> </div>
+<div class="line">JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *vm, [[maybe_unused]] <span class="keywordtype">void</span> *reserved) {</div>
+<div class="line">    JNIEnv *env;</div>
+<div class="line">    vm-&gt;GetEnv((<span class="keywordtype">void</span> **) &amp;env, JNI_VERSION_1_6);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Load BNM by finding the path to libil2cpp.so</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#a67262800df7f2b89e7c50814a23e9aa3">BNM::Loading::TryLoadByJNI</a>(env);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Or load using KittyMemory (as an example)</span></div>
+<div class="line">    <span class="comment">// Example_07();</span></div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_01);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_02);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_03);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_04);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_05);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_06);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a>(OnLoaded_Example_08);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> JNI_VERSION_1_6;</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceBNM_1_1Loading_html_a67262800df7f2b89e7c50814a23e9aa3"><div class="ttname"><a href="namespaceBNM_1_1Loading.html#a67262800df7f2b89e7c50814a23e9aa3">BNM::Loading::TryLoadByJNI</a></div><div class="ttdeci">bool TryLoadByJNI(JNIEnv *env, jobject context=nullptr)</div><div class="ttdoc">Try load BNM using JNI.</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Loading_html_ab48060cfb0526dcffee0740b400c5bab"><div class="ttname"><a href="namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab">BNM::Loading::AddOnLoadedEvent</a></div><div class="ttdeci">void AddOnLoadedEvent(void(*event)())</div><div class="ttdoc">Add event that will be called from il2cpp thread when il2cpp and BNM will be fully loaded.</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

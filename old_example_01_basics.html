@@ -108,7 +108,226 @@ $(function(){initNavTree('old_example_01_basics.html',''); initResizable(true); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>This example shows basic <a class="el" href="namespaceBNM.html" title="Main BNM namespace.">BNM</a>'s API.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/UserSettings/GlobalSettings.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Class.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Field.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Method.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Property.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Defaults.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Operators.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/BasicMonoStructures.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Used to not write BNM::Structures for each type</span></div>
+<div class="line"><span class="keyword">using namespace </span>BNM::Structures; <span class="comment">// Mono::String, Mono::Array etc.</span></div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM_1_1Operators.html">BNM::Operators</a>; <span class="comment">// Operators for methods, fields, and properties</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Variable for storing class</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a> ObjectClass{};</div>
+<div class="line"><span class="comment">// Variable for storing property</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Property.html">BNM::Property&lt;Mono::String *&gt;</a> ObjectName{};</div>
+<div class="line"><span class="comment">// Variable for storing method</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Method.html">BNM::Method&lt;Mono::String *&gt;</a> ObjectToString{};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Variable for storing field</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Field.html">BNM::Field&lt;void *&gt;</a> PlayerConfig{};</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Field.html">BNM::Field&lt;Mono::String *&gt;</a> ConfigName{};</div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Field.html">BNM::Field&lt;int&gt;</a> ConfigHealth{};</div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Field.html">BNM::Field&lt;int&gt;</a> ConfigCoins{};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Variable for storing pointer to field</span></div>
+<div class="line"><span class="keywordtype">void</span> **PlayerConfigPtr = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *Player = <span class="keyword">nullptr</span>;</div>
+<div class="line"> </div>
+<div class="line">void (*old_PlayerStart)(<a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *);</div>
+<div class="line"><span class="keywordtype">void</span> PlayerStart(<a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *instance) {</div>
+<div class="line">    old_PlayerStart(instance); <span class="comment">// Call original code</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Checking whether the Unity object is alive (UnityEngine.Object and its child classes)</span><span class="comment"></span></div>
+<div class="line"><span class="comment">    //! ALWAYS use this check instead of basic nullptr check!</span></div>
+<div class="line">    <span class="keywordflow">if</span> (Player-&gt;<a class="code hl_function" href="structBNM_1_1UnityEngine_1_1Object.html#a61d61a3f485eddd9c65459064407b823">Alive</a>() <span class="comment">/*BNM::UnityEngine::IsUnityObjectAlive(Player)*/</span>) {</div>
+<div class="line">        BNM_LOG_WARN(<span class="stringliteral">&quot;Player&#39;s Start called twice?&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    Player = instance;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Mono::String - C# string (string or System.String) in BNM</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// In this case, the field has a type and the property will automatically call the Get method to get the name.</span></div>
+<div class="line">    <span class="comment">// If you use auto, the field will be a copy of objectName and you will either have to call Get() or add() to objectName, i.e.:</span></div>
+<div class="line">    <span class="comment">// (instance &gt;&gt; ObjectName)() // for &gt;&gt; and -&gt;*</span></div>
+<div class="line">    <span class="comment">// ObjectName[instance]() // for []</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1String.html">Mono::String</a> *playerObjectName =</div>
+<div class="line">            <span class="comment">// Alternatives:</span></div>
+<div class="line">            <span class="comment">// * instance &gt;&gt; ObjectName</span></div>
+<div class="line">            <span class="comment">// * instance-&gt;*ObjectName;</span></div>
+<div class="line">            ObjectName[instance];</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get pointers to these fields</span></div>
+<div class="line">    PlayerConfigPtr = PlayerConfig[instance].GetPointer();</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// In the case of fields, the -&gt;* operator immediately returns a reference to the field data</span></div>
+<div class="line">    <span class="keyword">auto</span> playerName = *PlayerConfigPtr-&gt;*ConfigName;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Log name of the player&#39;s object</span></div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;Player&#39;s object name: \&quot;%s\&quot;; Player&#39;s name: \&quot;%s\&quot;&quot;</span>,</div>
+<div class="line">                 <span class="comment">// str() - convert string to std::string</span></div>
+<div class="line">                 playerObjectName-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1String.html#a7459f303b88be01ff293910407110c63">str</a>().c_str(),</div>
+<div class="line">                 <span class="comment">// -&gt; - iterator operator for checking data and warning if it is incorrect (in debugging mode)</span></div>
+<div class="line">                 playerName-&gt;str().c_str());</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Call ObjectToString, you can write arguments in (), as when calling any methods</span></div>
+<div class="line">    <span class="comment">// Alternative method call with an object</span></div>
+<div class="line">    <span class="comment">//     auto objectToStringResult = (instance &gt;&gt; ObjectToString)();</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> objectToStringResult = ObjectToString[instance]();</div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;objectToStringResult: \&quot;%s\&quot;&quot;</span>, objectToStringResult-&gt;str().c_str());</div>
+<div class="line"> </div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Changing the player&#39;s name</span></div>
+<div class="line"> </div>
+<div class="line">    *playerName = <a class="code hl_function" href="namespaceBNM.html#ace560203e4437ec7ff47344903b94c07">BNM::CreateMonoString</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;BNM_Player&quot;</span>));</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line">void (*old_PlayerUpdate)(<a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *);</div>
+<div class="line"><span class="keywordtype">void</span> PlayerUpdate(<a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *instance) {</div>
+<div class="line">    old_PlayerUpdate(instance); <span class="comment">// Call original code</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Checking whether the pointer to the m_Config field data is correct</span></div>
+<div class="line">    <span class="keywordflow">if</span> (PlayerConfigPtr == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Set 99999 lives using the operator -&gt;*</span><span class="comment"></span></div>
+<div class="line"><span class="comment">    //! *((*PlayerConfigPtr)-&gt;*ConfigHealth) = 99999;</span></div>
+<div class="line">    <span class="comment">// Or using []</span></div>
+<div class="line">    ConfigHealth[*PlayerConfigPtr] = 99999;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Set 99999 coins</span></div>
+<div class="line">    ConfigCoins[*PlayerConfigPtr] = 99999;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Here you can get all the necessary information</span></div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_01() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>; <span class="comment">// To avoid writing BNM:: in this method</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the UnityEngine class.Object</span></div>
+<div class="line">    ObjectClass = <a class="code hl_struct" href="structBNM_1_1Class.html">Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;Object&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get UnityEngine.Object::ToString method with 0 parameters</span></div>
+<div class="line">    ObjectToString = ObjectClass.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;ToString&quot;</span>), 0);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get UnityEngine.Object::name property</span></div>
+<div class="line">    ObjectName = ObjectClass.GetProperty(BNM_OBFUSCATE(<span class="stringliteral">&quot;name&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Let&#39;s imagine that there is a class in the game:</span></div>
+<div class="line"><span class="comment">        public class Player : MonoBehaviour {</span></div>
+<div class="line"><span class="comment">            private void Start();</span></div>
+<div class="line"><span class="comment">            private void Update();</span></div>
+<div class="line"><span class="comment">            private Config m_Config;</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">            public class Config {</span></div>
+<div class="line"><span class="comment">                string Name;</span></div>
+<div class="line"><span class="comment">                int Health;</span></div>
+<div class="line"><span class="comment">                int Coins;</span></div>
+<div class="line"><span class="comment">            }</span></div>
+<div class="line"><span class="comment">        }</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line">    <span class="comment">// Get the Player class</span></div>
+<div class="line">    <span class="keyword">auto</span> PlayerClass = <a class="code hl_struct" href="structBNM_1_1Class.html">Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;Player&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the Player::Config class</span></div>
+<div class="line">    <span class="keyword">auto</span> PlayerConfigClass = PlayerClass.GetInnerClass(BNM_OBFUSCATE(<span class="stringliteral">&quot;Config&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the Update and Start methods of the Player class</span></div>
+<div class="line">    <span class="keyword">auto</span> Update = PlayerClass.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;Update&quot;</span>));</div>
+<div class="line">    <span class="keyword">auto</span> Start = PlayerClass.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;Start&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get the Player.m_Config field</span></div>
+<div class="line">    PlayerConfig = PlayerClass.GetField(BNM_OBFUSCATE(<span class="stringliteral">&quot;m_Config&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get Player::Config&#39;s fields</span></div>
+<div class="line">    ConfigName = PlayerConfigClass.GetField(BNM_OBFUSCATE(<span class="stringliteral">&quot;Name&quot;</span>));</div>
+<div class="line">    ConfigHealth = PlayerConfigClass.GetField(BNM_OBFUSCATE(<span class="stringliteral">&quot;Health&quot;</span>));</div>
+<div class="line">    ConfigCoins = PlayerConfigClass.GetField(BNM_OBFUSCATE(<span class="stringliteral">&quot;Coins&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Hook Update and Start methods</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// There are 3 methods for hooking methods:</span></div>
+<div class="line">    <span class="comment">// * HOOK - hook via hooking software</span></div>
+<div class="line">    <span class="comment">// * InvokeHook - hook that works for those methods that are called directly by the engine (constructors (.ctor), events (Start, Update, etc.))</span></div>
+<div class="line">    <span class="comment">// * VirtualHook - hook for virtual methods</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// To replace Start and Update for this class, the best option is InvokeHook</span></div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM.html#a872e4ec758db7d996d41e7238f9dea06">InvokeHook</a>(Update, PlayerUpdate, old_PlayerUpdate);</div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM.html#a872e4ec758db7d996d41e7238f9dea06">InvokeHook</a>(Start, PlayerStart, old_PlayerStart);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// BNM::Defaults:</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// BNM::Defaults::Get&lt;type&gt;() - fast API that allow get all basic C# types and some basic Unity&#39;s types</span></div>
+<div class="line">    <span class="comment">// Supported types list:</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     C++, C# keyword, .NET type</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     void, void, System.Void</span></div>
+<div class="line"><span class="comment">     bool, bool, System.Boolean</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     BNM::Types::byte (uint8_t), byte, System.Byte</span></div>
+<div class="line"><span class="comment">     BNM::Types::sbyte (int8_t), sbyte, System.SByte</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     short (int16_t), short, System.Int16</span></div>
+<div class="line"><span class="comment">     BNM::Types::ushort (uint16_t), ushort, System.UInt16</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     int (int32_t), int, System.Int32</span></div>
+<div class="line"><span class="comment">     BNM::Types::uint (unsigned int), uint, System.UInt32</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     BNM::Types::nint (intptr_t), nint, System.IntPtr</span></div>
+<div class="line"><span class="comment">     BNM::Types::nuint (uintptr_t), nuint, System.UIntPtr</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     long, long, System.Int64</span></div>
+<div class="line"><span class="comment">     BNM::Types::ulong (unsigned long), ulong, System.UInt64</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     float, float, System.Single</span></div>
+<div class="line"><span class="comment">     double, double, System.Double</span></div>
+<div class="line"><span class="comment">     BNM::Types::decimal, decimal, System.Double</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     BNM::IL2CPP::Il2CppString *, BNM::Structures::Mono::String *, string, System.String</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Vector2, Vector2, UnityEngine.Vector2</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Vector3, Vector3, UnityEngine.Vector3</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Vector4, Vector4, UnityEngine.Vector4</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Color, Color, UnityEngine.Color</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Color32, Color32, UnityEngine.Color32</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Ray, Ray, UnityEngine.Ray</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Quaternion, Quaternion, UnityEngine.Quaternion</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Matrix3x3, Matrix3x3, UnityEngine.Matrix3x3</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::Matrix4x4, Matrix4x4, UnityEngine.Matrix4x4</span></div>
+<div class="line"><span class="comment">     BNM::Structures::Unity::RaycastHit, RaycastHit, UnityEngine.RaycastHit</span></div>
+<div class="line"><span class="comment">     BNM::UnityEngine::Object *, Object, UnityEngine.Object</span></div>
+<div class="line"><span class="comment">     BNM::UnityEngine::MonoBehaviour *, MonoBehaviour, UnityEngine.MonoBehaviour</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">     Any other pointer, object, System.Object</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Get int.Parse method</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Method.html">BNM::Method&lt;int&gt;</a> Parse = <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>().ToClass().<a class="code hl_function" href="structBNM_1_1Class.html#a8628035323d00e92f99a9c45772e96de">GetMethod</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;Parse&quot;</span>), 1);</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Operators_html"><div class="ttname"><a href="namespaceBNM_1_1Operators.html">BNM::Operators</a></div><div class="ttdoc">Namespace that holds operators which may help with methods, events, fields and properties.</div><div class="ttdef"><b>Definition</b> Operators.hpp:13</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="anamespaceBNM_html_a872e4ec758db7d996d41e7238f9dea06"><div class="ttname"><a href="namespaceBNM.html#a872e4ec758db7d996d41e7238f9dea06">BNM::InvokeHook</a></div><div class="ttdeci">bool InvokeHook(const BNM::MethodBase &amp;targetMethod, T_NEW newMet, T_OLD &amp;oldMet)</div><div class="ttdoc">Hook method by changing MethodInfo.</div><div class="ttdef"><b>Definition</b> MethodBase.hpp:166</div></div>
+<div class="ttc" id="anamespaceBNM_html_ace560203e4437ec7ff47344903b94c07"><div class="ttname"><a href="namespaceBNM.html#ace560203e4437ec7ff47344903b94c07">BNM::CreateMonoString</a></div><div class="ttdeci">Structures::Mono::String * CreateMonoString(const std::string_view &amp;str)</div><div class="ttdoc">Macro function for creating C# strings (BNM::Structures::Mono::String).</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html_a8628035323d00e92f99a9c45772e96de"><div class="ttname"><a href="structBNM_1_1Class.html#a8628035323d00e92f99a9c45772e96de">BNM::Class::GetMethod</a></div><div class="ttdeci">BNM::MethodBase GetMethod(const std::string_view &amp;name, int parameters=-1) const</div><div class="ttdoc">Get method by name and parameters count.</div></div>
+<div class="ttc" id="astructBNM_1_1Field_html"><div class="ttname"><a href="structBNM_1_1Field.html">BNM::Field</a></div><div class="ttdoc">Typed class for working with il2cpp fields.</div><div class="ttdef"><b>Definition</b> Field.hpp:20</div></div>
+<div class="ttc" id="astructBNM_1_1Method_html"><div class="ttname"><a href="structBNM_1_1Method.html">BNM::Method</a></div><div class="ttdoc">Typed class for working with il2cpp methods.</div><div class="ttdef"><b>Definition</b> Method.hpp:20</div></div>
+<div class="ttc" id="astructBNM_1_1Property_html"><div class="ttname"><a href="structBNM_1_1Property.html">BNM::Property</a></div><div class="ttdoc">Typed class for working with il2cpp properties.</div><div class="ttdef"><b>Definition</b> Property.hpp:20</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1String_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1String.html">BNM::Structures::Mono::String</a></div><div class="ttdoc">String type implementation.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:93</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1String_html_a7459f303b88be01ff293910407110c63"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1String.html#a7459f303b88be01ff293910407110c63">BNM::Structures::Mono::String::str</a></div><div class="ttdeci">std::string str()</div><div class="ttdoc">Convert Mono::String to std::string.</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1Object_html"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a></div><div class="ttdoc">UnityEngine.Object implementation.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:33</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1Object_html_a61d61a3f485eddd9c65459064407b823"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1Object.html#a61d61a3f485eddd9c65459064407b823">BNM::UnityEngine::Object::Alive</a></div><div class="ttdeci">bool Alive() const __attribute__((always_inline))</div><div class="ttdoc">Alias for IsValid()</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:50</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

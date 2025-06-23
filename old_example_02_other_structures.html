@@ -108,7 +108,244 @@ $(function(){initNavTree('old_example_02_other_structures.html',''); initResizab
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to work with different Unity and Mono structures.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/UserSettings/GlobalSettings.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Class.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Field.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Method.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Property.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Operators.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/BasicMonoStructures.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/ComplexMonoStructures.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/ClassesManagement.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM_1_1Structures_1_1Unity.html">BNM::Structures::Unity</a>; <span class="comment">// Vector3, Vector2 etc.</span></div>
+<div class="line"><span class="keyword">using namespace </span>BNM::Structures; <span class="comment">// Mono::String, Mono::Array etc.</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> MonoArray() {</div>
+<div class="line">    <span class="comment">// Type[] - an array of any objects</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1Array.html">Mono::Array&lt;int&gt;</a> *array = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! It can be created in two ways</span></div>
+<div class="line">    <span class="comment">// * Array&lt;Тип&gt;::Create(размер или std::vector&lt;Тип&gt;) - does not get into the garbage collector</span></div>
+<div class="line">    <span class="comment">// * LoadClass().NewArray&lt;Тип&gt;(размер) - gets into the garbage collector</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Let&#39;s create it in 1 way</span></div>
+<div class="line">    array = <a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a8fe1cd641d53eacba99aaa2d7c9ab992">Mono::Array&lt;int&gt;::Create</a>(10);</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! You can get the data using</span></div>
+<div class="line">    <span class="keyword">auto</span> dataPtr = array-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a1812ec554eaad94da73e4583d6f1cbc6">GetData</a>(); <span class="comment">// Pointer to the C array</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> dataVec = array-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Array.html#acc7eeb30e6dc33a0696af51ba63a71b6">ToVector</a>(); <span class="comment">// std::vector&lt;int&gt;</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> firstData = array-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a81dc133698054f408ef768ebeed6f7d7">At</a>(0); <span class="comment">// First element of the array</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> MonoList() {</div>
+<div class="line">    <span class="comment">// System.Collections.Generic.List&lt;Тип&gt; - a list of any objects</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1List.html">Mono::List&lt;int&gt;</a> *list = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! It can only be created through a class:</span></div>
+<div class="line">    <span class="comment">// LoadClass().NewList&lt;Type&gt;(size) - gets into the garbage collector</span></div>
+<div class="line">    <span class="comment">// LoadClass().NewListUnsafe&lt;Type&gt;(size) - gets into the garbage collector, but all methods are handled by BNM</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! To avoid searching for the System.Int32 class (the int value class in C#)</span></div>
+<div class="line"><span class="comment">    //! You can use BNM::Defaults::Get&lt;Type&gt;()</span></div>
+<div class="line"><span class="comment">    //! BNM::Defaults::Get supports only basic types</span></div>
+<div class="line">    <span class="keyword">auto</span> intClass = <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>().ToClass();</div>
+<div class="line"> </div>
+<div class="line">    list = intClass.NewList&lt;<span class="keywordtype">int</span>&gt;();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! You can get the data using</span></div>
+<div class="line">    <span class="keyword">auto</span> dataPtr = list-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1List.html#acc66c61bc8e06a59a8b9ed43fb200ea8">GetData</a>(); <span class="comment">// Pointer to the C array</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> dataVec = list-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1List.html#af659e035861f38c886d012e3d5d5e97a">ToVector</a>(); <span class="comment">// std::vector&lt;int&gt;</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> firstData = list-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1List.html#a9f705fe06348b8f13148361d55541179">At</a>(0); <span class="comment">// The first element of the array</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> MonoDictionary() {</div>
+<div class="line">    <span class="comment">// System.Collections.Generic.Dictionary&lt;Key type, Value type&gt; - dictionary</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html">Mono::Dictionary&lt;int, int&gt;</a> *dictionary;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// For more information about generic, see example 03</span></div>
+<div class="line">    <span class="keyword">auto</span> dictionaryClass = <a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;System.Collections.Generic&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;Dictionary`2&quot;</span>), <a class="code hl_struct" href="structBNM_1_1Image.html">BNM::Image</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;mscorlib.dll&quot;</span>)));</div>
+<div class="line">    <span class="keyword">auto</span> dictionary_int_int_Class = dictionaryClass.GetGeneric({<a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>(), <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>()});</div>
+<div class="line"> </div>
+<div class="line">    dictionary = (<a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html">Mono::Dictionary&lt;int, int&gt;</a> *) dictionary_int_int_Class.CreateNewObjectParameters();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! You can get the data using</span></div>
+<div class="line">    <span class="keyword">auto</span> keys = dictionary-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#aabe9745fd80d20c1f99d87460aada4f7">GetKeys</a>(); <span class="comment">// std::vector&lt;Key type&gt;</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> values = dictionary-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ac6e73d92793c62b684bf733c7440557f">GetValues</a>(); <span class="comment">// std::vector&lt;Value type&gt;</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keyword">auto</span> map = dictionary-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ab0b81bf3daaae085818c27c8a4ee46a6">ToMap</a>(); <span class="comment">// std::map&lt;Key type, Value type&gt;</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <span class="keywordtype">int</span> value = 0;</div>
+<div class="line">    <span class="keywordflow">if</span> (dictionary-&gt;<a class="code hl_function" href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#a638ce6482c48223634cc3d856105f925">TryGet</a>(1, &amp;value))</div>
+<div class="line">        ; <span class="comment">// Value found</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// The example below can be compiled in Unity and it will work</span></div>
+<div class="line"><span class="keyword">namespace </span>DelegatesAndActions {</div>
+<div class="line">    <span class="comment">// C# class</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     public class Delegates : MonoBehaviour {</span></div>
+<div class="line"><span class="comment">        public delegate int JustDelegate(int x, int y);</span></div>
+<div class="line"><span class="comment">        public JustDelegate justDelegateDef;</span></div>
+<div class="line"><span class="comment">        public UnityAction&lt;int, int&gt; JustUnityAction;</span></div>
+<div class="line"><span class="comment">        public Action&lt;int, int&gt; JustAction;</span></div>
+<div class="line"><span class="comment">        public UnityEvent&lt;int, int&gt; JustEvent;</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">        void Start() {</span></div>
+<div class="line"><span class="comment">            justDelegateDef += delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;justDelegateDef(1) x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return 1;</span></div>
+<div class="line"><span class="comment">            };</span></div>
+<div class="line"><span class="comment">            justDelegateDef += delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;justDelegateDef(3) x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return 3;</span></div>
+<div class="line"><span class="comment">            };</span></div>
+<div class="line"><span class="comment">            justDelegateDef += delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;justDelegateDef(500) x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return 500;</span></div>
+<div class="line"><span class="comment">            };</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">            JustAction += delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;JustAction x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return;</span></div>
+<div class="line"><span class="comment">            };</span></div>
+<div class="line"><span class="comment">            JustUnityAction += delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;JustUnityAction x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return;</span></div>
+<div class="line"><span class="comment">            };</span></div>
+<div class="line"><span class="comment">            JustEvent.AddListener(delegate(int x, int y) {</span></div>
+<div class="line"><span class="comment">                Log($&quot;JustEvent x: {x}, y: {y}&quot;);</span></div>
+<div class="line"><span class="comment">                return;</span></div>
+<div class="line"><span class="comment">            });</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">            // Just output of messages</span></div>
+<div class="line"><span class="comment">            logClass = new AndroidJavaClass(&quot;android.util.Log&quot;);</span></div>
+<div class="line"><span class="comment">        }</span></div>
+<div class="line"><span class="comment">        // Just output of messages</span></div>
+<div class="line"><span class="comment">        private AndroidJavaClass logClass;</span></div>
+<div class="line"><span class="comment">        void Log(string s) { logClass.CallStatic&lt;int&gt;(&quot;e&quot;, &quot;BNM_TargetApp&quot;, s); }</span></div>
+<div class="line"><span class="comment">    }</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ClassesManagement is used here. It is described in more detail in Example 05.</span></div>
+<div class="line">    <span class="keyword">struct </span>Delegates : BNM::UnityEngine::MonoBehaviour {</div>
+<div class="line">        BNM::MulticastDelegate&lt;int&gt; *justDelegateDef;</div>
+<div class="line">        BNM::UnityEngine::UnityAction&lt;int, int&gt; *JustUnityAction;</div>
+<div class="line">        BNM::Structures::Mono::Action&lt;int, int&gt; *JustAction;</div>
+<div class="line">        BNM::UnityEngine::UnityEvent&lt;int, int&gt; *JustEvent;</div>
+<div class="line">        <span class="keywordtype">void</span> *logClass;</div>
+<div class="line"> </div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a>(Delegates, BNM::CompileTimeClassBuilder(<span class="keyword">nullptr</span>, BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;Delegates&quot;</span>)).Build(), {}, {});</div>
+<div class="line">        <span class="keywordtype">void</span> Start() {</div>
+<div class="line">            <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a>(Start, <span class="keyword">this</span>);</div>
+<div class="line"> </div>
+<div class="line">            BNM_LOG_DEBUG(<span class="stringliteral">&quot;justDelegateDef: %p&quot;</span>, justDelegateDef);</div>
+<div class="line">            BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustUnityAction: %p&quot;</span>, JustUnityAction);</div>
+<div class="line">            BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustAction: %p&quot;</span>, JustAction);</div>
+<div class="line">            BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustEvent: %p&quot;</span>, JustEvent);</div>
+<div class="line">            <span class="keywordflow">if</span> (justDelegateDef) justDelegateDef-&gt;<a class="code hl_function" href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">Invoke</a>(10, 60);</div>
+<div class="line">            <span class="keywordflow">if</span> (JustUnityAction) JustUnityAction-&gt;Invoke(70, 9);</div>
+<div class="line">            <span class="keywordflow">if</span> (JustAction) JustAction-&gt;<a class="code hl_function" href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">Invoke</a>(30, 42);</div>
+<div class="line">            <span class="keywordflow">if</span> (JustEvent) JustEvent-&gt;<a class="code hl_function" href="structBNM_1_1UnityEngine_1_1UnityEvent.html#aab6aabb9597b5989c1f40a2c1c0d2b96">Invoke</a>(7, 234);</div>
+<div class="line">        }</div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Start, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Start&quot;</span>);</div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e">BNM_CustomMethodSkipTypeMatch</a>(Start);</div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed">BNM_CustomMethodMarkAsInvokeHook</a>(Start);</div>
+<div class="line">    };</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// You will see something like this in log:</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">        ByNameModding           justDelegateDef: 0x7986ef6900</span></div>
+<div class="line"><span class="comment">        ByNameModding           JustUnityAction: 0x7986ef67e0</span></div>
+<div class="line"><span class="comment">        ByNameModding           JustAction: 0x7986ef6870</span></div>
+<div class="line"><span class="comment">        ByNameModding           JustEvent: 0x7986eea480</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           justDelegateDef(1) x: 10, y: 60</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           justDelegateDef(3) x: 10, y: 60</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           justDelegateDef(500) x: 10, y: 60</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           JustUnityAction x: 70, y: 9</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           JustAction x: 30, y: 42</span></div>
+<div class="line"><span class="comment">        BNM_TargetApp           JustEvent x: 7, y: 234</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_02() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Unity structures</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Mathematical structures</span></div>
+<div class="line">    <span class="comment">// Mathematical operations similar to those in Unity can be performed on these structures</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Vector2.html">Vector2</a> vector2;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Vector3.html">Vector3</a> vector3;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Vector4.html">Vector4</a> vector4;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Matrix3x3.html">Matrix3x3</a> matrix3x3;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Matrix4x4.html">Matrix4x4</a> matrix4x4;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Quaternion.html">Quaternion</a> quaternion;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Structures for Raycast</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1Ray.html">Ray</a> ray;</div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Unity_1_1RaycastHit.html">RaycastHit</a> raycastHit;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Mono structures</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! System.String, for more information, see Example 01</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Structures_1_1Mono_1_1String.html">Mono::String</a> *string;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Method describes Array</span></div>
+<div class="line">    MonoArray();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Method describes List</span></div>
+<div class="line">    MonoList();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Method describes Dictionary</span></div>
+<div class="line">    MonoDictionary();</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Namespace describes Delegates and Actions</span></div>
+<div class="line">   <span class="keyword">using namespace </span>DelegatesAndActions;</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga0ae52105161c1941a762a28d626bf34f"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a></div><div class="ttdeci">#define BNM_CustomMethod(_method_, _isStatic_, _type_, _name_,...)</div><div class="ttdoc">Define info about C++ method for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:307</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga1e453f6d516e1a44299358007b0bb0cc"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a></div><div class="ttdeci">#define BNM_CustomClass(_class_, _targetType_, _baseType_, _owner_,...)</div><div class="ttdoc">Define info of C++ class for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:248</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga418724fa8e84ed50c67dface7221e7ed"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed">BNM_CustomMethodMarkAsInvokeHook</a></div><div class="ttdeci">#define BNM_CustomMethodMarkAsInvokeHook(_method_)</div><div class="ttdoc">Mark method to prefer InvokeHook.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:328</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga42432262a1aab726c72b8e2ec6831dbb"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a></div><div class="ttdeci">#define BNM_CallCustomMethodOrigin(_method_,...)</div><div class="ttdoc">Call method origin, if it exists.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:356</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga56d72e38e844cb95c809a58645c8ba1e"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e">BNM_CustomMethodSkipTypeMatch</a></div><div class="ttdeci">#define BNM_CustomMethodSkipTypeMatch(_method_)</div><div class="ttdoc">Skip method parameters type matching.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:346</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Structures_1_1Unity_html"><div class="ttname"><a href="namespaceBNM_1_1Structures_1_1Unity.html">BNM::Structures::Unity</a></div><div class="ttdoc">Namespace that holds Unity math and helper structs.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:14</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1Image_html"><div class="ttname"><a href="structBNM_1_1Image.html">BNM::Image</a></div><div class="ttdoc">Class for working with il2cpp images.</div><div class="ttdef"><b>Definition</b> Image.hpp:19</div></div>
+<div class="ttc" id="astructBNM_1_1MulticastDelegate_html_aa9a19682fe65f1fbc9b5cd70d02f62b9"><div class="ttname"><a href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">BNM::MulticastDelegate::Invoke</a></div><div class="ttdeci">Ret Invoke(Parameters ...parameters)</div><div class="ttdoc">Invoke delegate.</div><div class="ttdef"><b>Definition</b> Delegates.hpp:137</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Array_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Array.html">BNM::Structures::Mono::Array</a></div><div class="ttdoc">Array type implementation.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:155</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Array_html_a1812ec554eaad94da73e4583d6f1cbc6"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a1812ec554eaad94da73e4583d6f1cbc6">BNM::Structures::Mono::Array::GetData</a></div><div class="ttdeci">T * GetData() const</div><div class="ttdoc">Get array data pointer.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:179</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Array_html_a81dc133698054f408ef768ebeed6f7d7"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a81dc133698054f408ef768ebeed6f7d7">BNM::Structures::Mono::Array::At</a></div><div class="ttdeci">Utils::DataIterator&lt; T &gt; At(IL2CPP::il2cpp_array_size_t index) const</div><div class="ttdoc">Get element at index.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:223</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Array_html_a8fe1cd641d53eacba99aaa2d7c9ab992"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Array.html#a8fe1cd641d53eacba99aaa2d7c9ab992">BNM::Structures::Mono::Array::Create</a></div><div class="ttdeci">static Array&lt; T &gt; * Create(size_t capacity, bool _forceUseAlloc=false)</div><div class="ttdoc">Creates new empty array of set capacity.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:240</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Array_html_acc7eeb30e6dc33a0696af51ba63a71b6"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Array.html#acc7eeb30e6dc33a0696af51ba63a71b6">BNM::Structures::Mono::Array::ToVector</a></div><div class="ttdeci">std::vector&lt; T &gt; ToVector() const</div><div class="ttdoc">Convert array to std::vector.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:185</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Dictionary_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html">BNM::Structures::Mono::Dictionary</a></div><div class="ttdoc">System.Generic.Dictionary type implementation.</div><div class="ttdef"><b>Definition</b> ComplexMonoStructures.hpp:19</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Dictionary_html_a638ce6482c48223634cc3d856105f925"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#a638ce6482c48223634cc3d856105f925">BNM::Structures::Mono::Dictionary::TryGet</a></div><div class="ttdeci">bool TryGet(TKey key, TValue *value) const</div><div class="ttdoc">Try to get value by key.</div><div class="ttdef"><b>Definition</b> ComplexMonoStructures.hpp:141</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Dictionary_html_aabe9745fd80d20c1f99d87460aada4f7"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#aabe9745fd80d20c1f99d87460aada4f7">BNM::Structures::Mono::Dictionary::GetKeys</a></div><div class="ttdeci">std::vector&lt; TKey &gt; GetKeys() const</div><div class="ttdoc">Convert to std::vector.</div><div class="ttdef"><b>Definition</b> ComplexMonoStructures.hpp:106</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Dictionary_html_ab0b81bf3daaae085818c27c8a4ee46a6"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ab0b81bf3daaae085818c27c8a4ee46a6">BNM::Structures::Mono::Dictionary::ToMap</a></div><div class="ttdeci">std::map&lt; TKey, TValue &gt; ToMap() const</div><div class="ttdoc">Convert to std::map.</div><div class="ttdef"><b>Definition</b> ComplexMonoStructures.hpp:96</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1Dictionary_html_ac6e73d92793c62b684bf733c7440557f"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ac6e73d92793c62b684bf733c7440557f">BNM::Structures::Mono::Dictionary::GetValues</a></div><div class="ttdeci">std::vector&lt; TValue &gt; GetValues() const</div><div class="ttdoc">Convert to std::vector.</div><div class="ttdef"><b>Definition</b> ComplexMonoStructures.hpp:116</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1List_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1List.html">BNM::Structures::Mono::List</a></div><div class="ttdoc">System.Generic.List type implementation.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:323</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1List_html_a9f705fe06348b8f13148361d55541179"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1List.html#a9f705fe06348b8f13148361d55541179">BNM::Structures::Mono::List::At</a></div><div class="ttdeci">Utils::DataIterator&lt; T &gt; At(int index) const</div><div class="ttdoc">Get element at index.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:450</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1List_html_acc66c61bc8e06a59a8b9ed43fb200ea8"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1List.html#acc66c61bc8e06a59a8b9ed43fb200ea8">BNM::Structures::Mono::List::GetData</a></div><div class="ttdeci">T * GetData() const</div><div class="ttdoc">Get list data pointer.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:353</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1List_html_af659e035861f38c886d012e3d5d5e97a"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1List.html#af659e035861f38c886d012e3d5d5e97a">BNM::Structures::Mono::List::ToVector</a></div><div class="ttdeci">std::vector&lt; T &gt; ToVector() const</div><div class="ttdoc">Convert list to std::vector.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:377</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Mono_1_1String_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Mono_1_1String.html">BNM::Structures::Mono::String</a></div><div class="ttdoc">String type implementation.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:93</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Matrix3x3_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Matrix3x3.html">BNM::Structures::Unity::Matrix3x3</a></div><div class="ttdef"><b>Definition</b> Matrix3x3.hpp:12</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Matrix4x4_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Matrix4x4.html">BNM::Structures::Unity::Matrix4x4</a></div><div class="ttdef"><b>Definition</b> Matrix4x4.hpp:26</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Quaternion_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Quaternion.html">BNM::Structures::Unity::Quaternion</a></div><div class="ttdef"><b>Definition</b> Quaternion.hpp:6</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Ray_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Ray.html">BNM::Structures::Unity::Ray</a></div><div class="ttdef"><b>Definition</b> Ray.hpp:6</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1RaycastHit_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1RaycastHit.html">BNM::Structures::Unity::RaycastHit</a></div><div class="ttdef"><b>Definition</b> RaycastHit.hpp:9</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Vector2_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Vector2.html">BNM::Structures::Unity::Vector2</a></div><div class="ttdef"><b>Definition</b> Vector2.hpp:7</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Vector3_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Vector3.html">BNM::Structures::Unity::Vector3</a></div><div class="ttdef"><b>Definition</b> Vector3.hpp:10</div></div>
+<div class="ttc" id="astructBNM_1_1Structures_1_1Unity_1_1Vector4_html"><div class="ttname"><a href="structBNM_1_1Structures_1_1Unity_1_1Vector4.html">BNM::Structures::Unity::Vector4</a></div><div class="ttdef"><b>Definition</b> Vector4.hpp:10</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1UnityEvent_html_aab6aabb9597b5989c1f40a2c1c0d2b96"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1UnityEvent.html#aab6aabb9597b5989c1f40a2c1c0d2b96">BNM::UnityEngine::UnityEvent::Invoke</a></div><div class="ttdeci">void Invoke(Parameters ...parameters) const</div><div class="ttdoc">Invoke event.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:215</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

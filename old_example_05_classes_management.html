@@ -108,7 +108,140 @@ $(function(){initNavTree('old_example_05_classes_management.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to use classes management.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/UserSettings/GlobalSettings.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/ClassesManagement.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/BasicMonoStructures.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/UnityStructures.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Field.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;BNM/ComplexMonoStructures.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#ifdef BNM_CLASSES_MANAGEMENT</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM_1_1Structures_1_1Unity.html">BNM::Structures::Unity</a>;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM_1_1Structures_1_1Mono.html">BNM::Structures::Mono</a>;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Let&#39;s add a class to the game</span></div>
+<div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment">    namespace BNM_Example_05 {</span></div>
+<div class="line"><span class="comment">        public class BNM_ExampleObject : UnityEngine.MonoBehaviour, UnityEngine.IExposedPropertyTable {</span></div>
+<div class="line"><span class="comment">            int Value;</span></div>
+<div class="line"><span class="comment">            void Start();</span></div>
+<div class="line"><span class="comment">            Object GetReferenceValue(PropertyName id, out bool idValid);</span></div>
+<div class="line"><span class="comment">        };</span></div>
+<div class="line"><span class="comment">    };</span></div>
+<div class="line"><span class="comment">*/</span><span class="comment"></span></div>
+<div class="line"><span class="comment">//! BNM::IL2CPP::Il2CppObject is needed if the object inherits System.Object or nothing</span></div>
+<div class="line"><span class="comment">//! BNM::UnityEngine::Object is needed if the object inherits UnityEngine.ScriptableObject</span></div>
+<div class="line"><span class="comment">//! BNM::UnityEngine::MonoBehaviour is needed if the object inherits UnityEngine.MonoBehaviour</span></div>
+<div class="line"><span class="keyword">struct </span>BNM_ExampleObject : <span class="keyword">public</span> <a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a> {</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a>(BNM_ExampleObject,</div>
+<div class="line">                    <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;BNM_Example_05&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;BNM_ExampleObject&quot;</span>)).Build(),</div>
+<div class="line">                    <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;MonoBehaviour&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;UnityEngine.CoreModule&quot;</span>)).Build(),</div>
+<div class="line">                    <span class="comment">// Here need specify base class, if you need to create inner class</span></div>
+<div class="line">                    {},</div>
+<div class="line">                    <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;IExposedPropertyTable&quot;</span>)).<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">Build</a>(),</div>
+<div class="line">                    );</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// To set fields, for example `veryImportantValue`</span></div>
+<div class="line">    <span class="comment">// Otherwise it will have garbage from memory</span></div>
+<div class="line">    <span class="keywordtype">void</span> Constructor() {</div>
+<div class="line">        <a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a> tmp = *<span class="keyword">this</span>;</div>
+<div class="line">        *<span class="keyword">this</span> = BNM_ExampleObject();</div>
+<div class="line">        *((<a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a> *)<span class="keyword">this</span>) = tmp;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">int</span> Value{};</div>
+<div class="line">    uintptr_t veryImportantValue{0x424E4D};</div>
+<div class="line">    <span class="keywordtype">void</span> Start() {</div>
+<div class="line">        BNM_LOG_INFO(<span class="stringliteral">&quot;BNM_ExampleObject::Start! Верен ли veryImportantValue (Is veryImportantValue true): %d&quot;</span>, veryImportantValue == 0x424E4D);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> *GetReferenceValue(<span class="keywordtype">int</span> <span class="keywordtype">id</span>, <span class="keywordtype">bool</span> *isValid) {</div>
+<div class="line">        *isValid = <span class="keyword">false</span>;</div>
+<div class="line">        BNM_LOG_INFO(<span class="stringliteral">&quot;BNM_ExampleObject::GetReferenceValue(%d)!&quot;</span>, <span class="keywordtype">id</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// To override virtual methods or replace methods, the types must be exactly the same</span></div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(GetReferenceValue, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;BNM::IL2CPP::Il2CppObject *&gt;</a>(), <span class="stringliteral">&quot;GetReferenceValue&quot;</span>,</div>
+<div class="line">                 BNM::CompileTimeClassBuilder(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;IExposedPropertyTable&quot;</span>)).Build(),</div>
+<div class="line">                 <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;bool&gt;</a>());</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Start, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Start&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga66a49c67bad6e3a4480c4e16b52cb0ed">BNM_CustomField</a>(Value, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>(), <span class="stringliteral">&quot;Value&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Constructor, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;.ctor&quot;</span>);</div>
+<div class="line">};</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">//! Let&#39;s look at an example from example 02</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// This class was created to replace Start and use class&#39; fields</span></div>
+<div class="line"><span class="keyword">struct </span>Delegates :</div>
+<div class="line">        <span class="comment">// Since we want to use the fields directly, we need to specify parent to match addresses of fields themselves.</span></div>
+<div class="line">        <a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a> {</div>
+<div class="line">    <span class="comment">// Here we specify fields. It is not necessary to specify them before or after BNM_CustomClass.</span></div>
+<div class="line">    BNM::MulticastDelegate&lt;int&gt; *justDelegateDef;</div>
+<div class="line">    BNM::UnityEngine::UnityAction&lt;int, int&gt; *JustUnityAction;</div>
+<div class="line">    BNM::Structures::Mono::Action&lt;int, int&gt; *JustAction;</div>
+<div class="line">    BNM::UnityEngine::UnityEvent&lt;int, int&gt; *JustEvent;</div>
+<div class="line">    <span class="comment">// If the field is not needed and you do not create this class in C++ using new or any other methods, you can omit all fields that come after the necessary ones.</span></div>
+<div class="line">    <span class="keywordtype">void</span> *logClass;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a>(Delegates, BNM::CompileTimeClassBuilder(<span class="keyword">nullptr</span>, BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;Delegates&quot;</span>)).Build(), {}, {});</div>
+<div class="line">    <span class="keywordtype">void</span> Start() {</div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a>(Start, <span class="keyword">this</span>);</div>
+<div class="line"> </div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;justDelegateDef: %p&quot;</span>, justDelegateDef);</div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustUnityAction: %p&quot;</span>, JustUnityAction);</div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustAction: %p&quot;</span>, JustAction);</div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;JustEvent: %p&quot;</span>, JustEvent);</div>
+<div class="line">        <span class="keywordflow">if</span> (justDelegateDef) justDelegateDef-&gt;<a class="code hl_function" href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">Invoke</a>(10, 60);</div>
+<div class="line">        <span class="keywordflow">if</span> (JustUnityAction) JustUnityAction-&gt;Invoke(70, 9);</div>
+<div class="line">        <span class="keywordflow">if</span> (JustAction) JustAction-&gt;<a class="code hl_function" href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">Invoke</a>(30, 42);</div>
+<div class="line">        <span class="keywordflow">if</span> (JustEvent) JustEvent-&gt;<a class="code hl_function" href="structBNM_1_1UnityEngine_1_1UnityEvent.html#aab6aabb9597b5989c1f40a2c1c0d2b96">Invoke</a>(7, 234);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="comment">// We specify all information about method</span></div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Start, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Start&quot;</span>);</div>
+<div class="line">    <span class="comment">// Used to speed up the search for methods. Tells BNM not to compare the types of fields, but simply check their number.</span></div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e">BNM_CustomMethodSkipTypeMatch</a>(Start);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Specifies BNM to use method hook via Invoke. It doesn&#39;t have to be specified, it just makes it easier for BNM to work.</span></div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed">BNM_CustomMethodMarkAsInvokeHook</a>(Start);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Also BNM have:</span><span class="comment"></span></div>
+<div class="line"><span class="comment">    //! BNM_CustomMethodMarkAsBasicHook()</span></div>
+<div class="line">    <span class="comment">// It works the same way as BNM_CustomMethodMarkAsInvokeHook, but says to use hook using hooking software.</span></div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_05() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>;</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! auto BNM_ExampleObjectClass = LoadClass(BNM_OBFUSCATE(&quot;BNM_Example_03&quot;), BNM_OBFUSCATE(&quot;BNM_ExampleObject&quot;))</span></div>
+<div class="line">    <span class="comment">// or</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Class.html">Class</a> BNM_ExampleObjectClass = BNM_ExampleObject::BNMCustomClass.myClass;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga0ae52105161c1941a762a28d626bf34f"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a></div><div class="ttdeci">#define BNM_CustomMethod(_method_, _isStatic_, _type_, _name_,...)</div><div class="ttdoc">Define info about C++ method for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:307</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga1e453f6d516e1a44299358007b0bb0cc"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a></div><div class="ttdeci">#define BNM_CustomClass(_class_, _targetType_, _baseType_, _owner_,...)</div><div class="ttdoc">Define info of C++ class for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:248</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga418724fa8e84ed50c67dface7221e7ed"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed">BNM_CustomMethodMarkAsInvokeHook</a></div><div class="ttdeci">#define BNM_CustomMethodMarkAsInvokeHook(_method_)</div><div class="ttdoc">Mark method to prefer InvokeHook.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:328</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga42432262a1aab726c72b8e2ec6831dbb"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a></div><div class="ttdeci">#define BNM_CallCustomMethodOrigin(_method_,...)</div><div class="ttdoc">Call method origin, if it exists.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:356</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga56d72e38e844cb95c809a58645c8ba1e"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e">BNM_CustomMethodSkipTypeMatch</a></div><div class="ttdeci">#define BNM_CustomMethodSkipTypeMatch(_method_)</div><div class="ttdoc">Skip method parameters type matching.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:346</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga66a49c67bad6e3a4480c4e16b52cb0ed"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga66a49c67bad6e3a4480c4e16b52cb0ed">BNM_CustomField</a></div><div class="ttdeci">#define BNM_CustomField(_field_, _type_, _name_)</div><div class="ttdoc">Define info about C++ field for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:278</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Structures_1_1Mono_html"><div class="ttname"><a href="namespaceBNM_1_1Structures_1_1Mono.html">BNM::Structures::Mono</a></div><div class="ttdoc">Namespace that holds some basic and the most commonly used C# classes.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:68</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Structures_1_1Unity_html"><div class="ttname"><a href="namespaceBNM_1_1Structures_1_1Unity.html">BNM::Structures::Unity</a></div><div class="ttdoc">Namespace that holds Unity math and helper structs.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:14</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a></div><div class="ttdoc">Struct for building CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:633</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html_a9a7477a520fdec34be89a2de3661732d"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">BNM::CompileTimeClassBuilder::Build</a></div><div class="ttdeci">CompileTimeClass Build()</div><div class="ttdoc">Build CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:710</div></div>
+<div class="ttc" id="astructBNM_1_1MulticastDelegate_html_aa9a19682fe65f1fbc9b5cd70d02f62b9"><div class="ttname"><a href="structBNM_1_1MulticastDelegate.html#aa9a19682fe65f1fbc9b5cd70d02f62b9">BNM::MulticastDelegate::Invoke</a></div><div class="ttdeci">Ret Invoke(Parameters ...parameters)</div><div class="ttdoc">Invoke delegate.</div><div class="ttdef"><b>Definition</b> Delegates.hpp:137</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1MonoBehaviour_html"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a></div><div class="ttdoc">UnityEngine.MonoBehaviour implementation.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:72</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1UnityEvent_html_aab6aabb9597b5989c1f40a2c1c0d2b96"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1UnityEvent.html#aab6aabb9597b5989c1f40a2c1c0d2b96">BNM::UnityEngine::UnityEvent::Invoke</a></div><div class="ttdeci">void Invoke(Parameters ...parameters) const</div><div class="ttdoc">Invoke event.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:215</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

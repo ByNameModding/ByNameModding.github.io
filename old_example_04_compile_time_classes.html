@@ -108,7 +108,48 @@ $(function(){initNavTree('old_example_04_compile_time_classes.html',''); initRes
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to use compile-time classes.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/UserSettings/GlobalSettings.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Class.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_04() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// CompileTimeClass is used for ClassesManagement to find classes</span></div>
+<div class="line">    <span class="comment">// It cannot be created directly, so there is a CompileTimeClassBuilder</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Suppose there is such a structure:</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">     namespace ExampleNamespace {</span></div>
+<div class="line"><span class="comment">        class ExampleClass {</span></div>
+<div class="line"><span class="comment">            class ExampleInnerClass {</span></div>
+<div class="line"><span class="comment">                class ExampleInnerGenericClass&lt;T1, T2, T3&gt; {</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">                }</span></div>
+<div class="line"><span class="comment">            }</span></div>
+<div class="line"><span class="comment">        }</span></div>
+<div class="line"><span class="comment">     }</span></div>
+<div class="line"><span class="comment">     */</span></div>
+<div class="line">    <span class="comment">// And you need an array class ExampleInnerGenericClass&lt;int, float, ExampleClass&gt;[]</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> targetClass = <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">CompileTimeClassBuilder</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleNamespace&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleClass&quot;</span>)) <span class="comment">// ExampleNamespace.ExampleClass</span></div>
+<div class="line">            .<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a54b80274e5cad9b96a12e33947d41f30">Class</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleInnerClass&quot;</span>)) <span class="comment">// ExampleNamespace.ExampleClass.ExampleInnerClass</span></div>
+<div class="line">            .<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a54b80274e5cad9b96a12e33947d41f30">Class</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleInnerGenericClass`3&quot;</span>)) <span class="comment">// ExampleNamespace.ExampleClass.ExampleInnerClass.ExampleInnerGenericClass&lt;T1, T2, T3&gt;</span></div>
+<div class="line">            .<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a938b8ed130d78e3ee7b3d9a2bf6c2dbf">Generic</a>({</div>
+<div class="line">                <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>(),</div>
+<div class="line">                <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;float&gt;</a>(),</div>
+<div class="line">                <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">CompileTimeClassBuilder</a>(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleNamespace&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;ExampleClass&quot;</span>)).<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">Build</a>()</div>
+<div class="line">            }) <span class="comment">// ExampleNamespace.ExampleClass.ExampleInnerClass.ExampleInnerGenericClass&lt;int, float, ExampleNamespace.ExampleClass&gt;</span></div>
+<div class="line">            .Modifier(CompileTimeClass::ModifierType::Array) <span class="comment">// ExampleNamespace.ExampleClass.ExampleInnerClass.ExampleInnerGenericClass&lt;int, float, ExampleNamespace.ExampleClass&gt;[]</span></div>
+<div class="line">            .<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">Build</a>();</div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a></div><div class="ttdoc">Struct for building CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:633</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html_a54b80274e5cad9b96a12e33947d41f30"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html#a54b80274e5cad9b96a12e33947d41f30">BNM::CompileTimeClassBuilder::Class</a></div><div class="ttdeci">CompileTimeClassBuilder &amp; Class(const char *_name)</div><div class="ttdoc">Specify inner class name.</div><div class="ttdef"><b>Definition</b> Class.hpp:662</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html_a938b8ed130d78e3ee7b3d9a2bf6c2dbf"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html#a938b8ed130d78e3ee7b3d9a2bf6c2dbf">BNM::CompileTimeClassBuilder::Generic</a></div><div class="ttdeci">CompileTimeClassBuilder &amp; Generic(const std::initializer_list&lt; CompileTimeClass &gt; &amp;templateTypes)</div><div class="ttdoc">Specify generic types of target class.</div><div class="ttdef"><b>Definition</b> Class.hpp:694</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html_a9a7477a520fdec34be89a2de3661732d"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">BNM::CompileTimeClassBuilder::Build</a></div><div class="ttdeci">CompileTimeClass Build()</div><div class="ttdoc">Build CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:710</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

@@ -108,7 +108,142 @@ $(function(){initNavTree('old_example_06_coroutine.html',''); initResizable(true
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to use coroutines.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/Coroutine.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/UnityStructures.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/ClassesManagement.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;BNM/Field.hpp&quot;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#ifdef BNM_CLASSES_MANAGEMENT</span></div>
+<div class="line"><span class="preprocessor">#ifdef BNM_COROUTINE</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a> *thing{};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// An example of custom instructions for IEnumerator. For example, let&#39;s make an analog of WaitForSecondsRealtime, but using std::chrono</span></div>
+<div class="line"><span class="keyword">struct </span>CustomYieldInstruction : BNM::IL2CPP::Il2CppObject {</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a>(CustomYieldInstruction, <a class="code hl_struct" href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a>(<span class="keyword">nullptr</span>, BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;CustomYieldInstruction&quot;</span>)).Build(), {}, {},</div>
+<div class="line">                    BNM::CompileTimeClassBuilder(BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;System.Collections&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;IEnumerator&quot;</span>), BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;mscorlib.dll&quot;</span>)).<a class="code hl_function" href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">Build</a>());</div>
+<div class="line">    std::chrono::time_point&lt;std::chrono::system_clock&gt; waitUntilTime;</div>
+<div class="line">    <span class="keywordtype">void</span> Finalize() { this-&gt;~CustomYieldInstruction(); }</div>
+<div class="line">    <span class="keywordtype">bool</span> MoveNext() { <span class="keywordflow">return</span> waitUntilTime &gt; std::chrono::system_clock::now(); }</div>
+<div class="line">    <span class="keywordtype">void</span> Reset() { waitUntilTime = {}; }</div>
+<div class="line">    Il2CppObject *Current() { <span class="keywordflow">return</span> <span class="keyword">nullptr</span>; }</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Finalize, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Finalize&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(MoveNext, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;bool&gt;</a>(), <span class="stringliteral">&quot;MoveNext&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Reset, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Reset&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Current, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;BNM::IL2CPP::Il2CppObject *&gt;</a>(), <span class="stringliteral">&quot;get_Current&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">void</span> Setup(<span class="keywordtype">long</span> <span class="keywordtype">long</span> seconds) {</div>
+<div class="line">        Reset();</div>
+<div class="line">        waitUntilTime = std::chrono::system_clock::now() + std::chrono::seconds(seconds);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">static</span> BNM::IL2CPP::Il2CppObject *New(<span class="keywordtype">long</span> <span class="keywordtype">long</span> seconds) {</div>
+<div class="line">        <span class="keyword">auto</span> instance = (CustomYieldInstruction *) BNM::Class(BNMCustomClass.myClass).CreateNewInstance();</div>
+<div class="line">        instance-&gt;Setup(seconds);</div>
+<div class="line">        <span class="keywordflow">return</span> instance;</div>
+<div class="line">    }</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// IEnumerator Example</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Coroutine_1_1IEnumerator.html">BNM::Coroutine::IEnumerator</a> IEnumeratorExample() {</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 1&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// The code is very similar to the IEnumerator code in C#, it&#39;s just that instead of yield return, you need to use co_yield</span></div>
+<div class="line">    <span class="keyword">co_yield</span> <a class="code hl_struct" href="structBNM_1_1Coroutine_1_1WaitForEndOfFrame.html">BNM::Coroutine::WaitForEndOfFrame</a>();</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 2 (WaitForEndOfFrame)&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">co_yield</span> <a class="code hl_struct" href="structBNM_1_1Coroutine_1_1WaitForFixedUpdate.html">BNM::Coroutine::WaitForFixedUpdate</a>();</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 3 (WaitForFixedUpdate)&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">co_yield</span> <a class="code hl_struct" href="structBNM_1_1Coroutine_1_1WaitForSeconds.html">BNM::Coroutine::WaitForSeconds</a>(2.f);</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 4 (WaitForSeconds)&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">co_yield</span> <a class="code hl_struct" href="structBNM_1_1Coroutine_1_1WaitForSecondsRealtime.html">BNM::Coroutine::WaitForSecondsRealtime</a>(1.f);</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 5 (WaitForSecondsRealtime)&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">co_yield</span> CustomYieldInstruction::New(5);</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;IEnumeratorExample 6 (CustomYieldInstruction)&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// An analog of WaitWhile, but instead of il2cpp methods, it accepts C++ methods</span></div>
+<div class="line">    <span class="keyword">co_yield</span> <a class="code hl_struct" href="structBNM_1_1Coroutine_1_1WaitWhile.html">BNM::Coroutine::WaitWhile</a>([]() -&gt; <span class="keywordtype">bool</span> {</div>
+<div class="line">        <span class="keywordflow">return</span> thing-&gt;Alive();</div>
+<div class="line">    });</div>
+<div class="line">    BNM_LOG_DEBUG(<span class="stringliteral">&quot;&#39;thing&#39; мертва (dead) :_(&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Unlike C#, it is necessary to call co_return at the end of the code</span></div>
+<div class="line">    <span class="keyword">co_return</span>;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a> GameObject;</div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Method.html">BNM::Method&lt;void&gt;</a> Destory;</div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Method.html">BNM::Method&lt;void *&gt;</a> StartCoroutine;</div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Suppose there is such a class in the game</span></div>
+<div class="line"><span class="keyword">struct </span>EnumeratorTests : <span class="keyword">public</span> <a class="code hl_struct" href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a> {</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a>(EnumeratorTests, BNM::CompileTimeClassBuilder(<span class="keyword">nullptr</span>, BNM_OBFUSCATE_TMP(<span class="stringliteral">&quot;EnumeratorTests&quot;</span>)).Build(), {}, {});</div>
+<div class="line">    <span class="keywordtype">void</span> Start() {</div>
+<div class="line">        <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a>(Start, <span class="keyword">this</span>);</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// Creating an object for its subsequent destruction</span></div>
+<div class="line">        thing = (BNM::UnityEngine::Object *) GameObject.<a class="code hl_function" href="structBNM_1_1Class.html#a887a280195b392c9d3ba4de2ba283f40">CreateNewObjectParameters</a>();</div>
+<div class="line"> </div>
+<div class="line">        <span class="comment">// You can get C# IEnumerator using .Get() or any method of casting to IEnumerator *</span></div>
+<div class="line">        <span class="comment">// BNM::Coroutine::IEnumerator *enumerator = IEnumeratorExample();</span></div>
+<div class="line">        <span class="comment">// auto enumerator = (BNM::Coroutine::IEnumerator *) IEnumeratorExample();</span></div>
+<div class="line">        <span class="keyword">auto</span> enumerator = IEnumeratorExample().Get();</div>
+<div class="line"> </div>
+<div class="line">        <span class="keyword">auto</span> r = StartCoroutine[<span class="keyword">this</span>](enumerator);</div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;Invoked: %p&quot;</span>, r);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">inline</span> <span class="keyword">static</span> <span class="keywordtype">int</span> frames = 0;</div>
+<div class="line">    <span class="keywordtype">void</span> Update() {</div>
+<div class="line">        frames++;</div>
+<div class="line">        <span class="keywordflow">if</span> (frames != 200) <span class="keywordflow">return</span>;</div>
+<div class="line">        BNM_LOG_DEBUG(<span class="stringliteral">&quot;Killing &#39;thing&#39;&quot;</span>);</div>
+<div class="line">        Destory(thing);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Start, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Start&quot;</span>);</div>
+<div class="line">    <a class="code hl_define" href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a>(Update, <span class="keyword">false</span>, <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void&gt;</a>(), <span class="stringliteral">&quot;Update&quot;</span>);</div>
+<div class="line">};</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_06() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> coreModule = <a class="code hl_struct" href="structBNM_1_1Image.html">BNM::Image</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine.CoreModule.dll&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    GameObject = <a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;GameObject&quot;</span>), coreModule);</div>
+<div class="line">    Destory = GameObject.<a class="code hl_function" href="structBNM_1_1Class.html#af063065f3a3b8757c47d7b8f5db94195">GetParent</a>().<a class="code hl_function" href="structBNM_1_1Class.html#a8628035323d00e92f99a9c45772e96de">GetMethod</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;Destroy&quot;</span>), 1);</div>
+<div class="line">    StartCoroutine = <a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;MonoBehaviour&quot;</span>), coreModule).<a class="code hl_function" href="structBNM_1_1Class.html#a8628035323d00e92f99a9c45772e96de">GetMethod</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;StartCoroutine&quot;</span>), {BNM_OBFUSCATE(<span class="stringliteral">&quot;routine&quot;</span>)});</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#endif </span><span class="comment">// BNM_COROUTINE</span></div>
+<div class="line"><span class="preprocessor">#endif </span><span class="comment">// BNM_CLASSES_MANAGEMENT</span></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga0ae52105161c1941a762a28d626bf34f"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f">BNM_CustomMethod</a></div><div class="ttdeci">#define BNM_CustomMethod(_method_, _isStatic_, _type_, _name_,...)</div><div class="ttdoc">Define info about C++ method for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:307</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga1e453f6d516e1a44299358007b0bb0cc"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc">BNM_CustomClass</a></div><div class="ttdeci">#define BNM_CustomClass(_class_, _targetType_, _baseType_, _owner_,...)</div><div class="ttdoc">Define info of C++ class for il2cpp.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:248</div></div>
+<div class="ttc" id="agroup__CUSTOM__CLASSES__MACRO_html_ga42432262a1aab726c72b8e2ec6831dbb"><div class="ttname"><a href="group__CUSTOM__CLASSES__MACRO.html#ga42432262a1aab726c72b8e2ec6831dbb">BNM_CallCustomMethodOrigin</a></div><div class="ttdeci">#define BNM_CallCustomMethodOrigin(_method_,...)</div><div class="ttdoc">Call method origin, if it exists.</div><div class="ttdef"><b>Definition</b> ClassesManagement.hpp:356</div></div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html_a8628035323d00e92f99a9c45772e96de"><div class="ttname"><a href="structBNM_1_1Class.html#a8628035323d00e92f99a9c45772e96de">BNM::Class::GetMethod</a></div><div class="ttdeci">BNM::MethodBase GetMethod(const std::string_view &amp;name, int parameters=-1) const</div><div class="ttdoc">Get method by name and parameters count.</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html_a887a280195b392c9d3ba4de2ba283f40"><div class="ttname"><a href="structBNM_1_1Class.html#a887a280195b392c9d3ba4de2ba283f40">BNM::Class::CreateNewObjectParameters</a></div><div class="ttdeci">BNM::IL2CPP::Il2CppObject * CreateNewObjectParameters(Parameters ...parameters) const</div><div class="ttdoc">Create class instance.</div><div class="ttdef"><b>Definition</b> Method.hpp:127</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html_af063065f3a3b8757c47d7b8f5db94195"><div class="ttname"><a href="structBNM_1_1Class.html#af063065f3a3b8757c47d7b8f5db94195">BNM::Class::GetParent</a></div><div class="ttdeci">BNM::Class GetParent() const</div><div class="ttdoc">Get parent.</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html">BNM::CompileTimeClassBuilder</a></div><div class="ttdoc">Struct for building CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:633</div></div>
+<div class="ttc" id="astructBNM_1_1CompileTimeClassBuilder_html_a9a7477a520fdec34be89a2de3661732d"><div class="ttname"><a href="structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d">BNM::CompileTimeClassBuilder::Build</a></div><div class="ttdeci">CompileTimeClass Build()</div><div class="ttdoc">Build CompileTimeClass.</div><div class="ttdef"><b>Definition</b> Class.hpp:710</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1IEnumerator_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1IEnumerator.html">BNM::Coroutine::IEnumerator</a></div><div class="ttdoc">Analog of C# IEnumerator that is based on C++20 coroutines to emulate work of Unity&#39;s coroutines.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:97</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1WaitForEndOfFrame_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1WaitForEndOfFrame.html">BNM::Coroutine::WaitForEndOfFrame</a></div><div class="ttdoc">BNM&#39;s custom wrapper for UnityEngine.WaitForEndOfFrame.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:53</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1WaitForFixedUpdate_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1WaitForFixedUpdate.html">BNM::Coroutine::WaitForFixedUpdate</a></div><div class="ttdoc">BNM&#39;s custom wrapper for UnityEngine.WaitForFixedUpdate.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:60</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1WaitForSecondsRealtime_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1WaitForSecondsRealtime.html">BNM::Coroutine::WaitForSecondsRealtime</a></div><div class="ttdoc">BNM&#39;s custom wrapper for UnityEngine.WaitForSecondsRealtime.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:74</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1WaitForSeconds_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1WaitForSeconds.html">BNM::Coroutine::WaitForSeconds</a></div><div class="ttdoc">BNM&#39;s custom wrapper for UnityEngine.WaitForSeconds.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:67</div></div>
+<div class="ttc" id="astructBNM_1_1Coroutine_1_1WaitWhile_html"><div class="ttname"><a href="structBNM_1_1Coroutine_1_1WaitWhile.html">BNM::Coroutine::WaitWhile</a></div><div class="ttdoc">BNM&#39;s custom implementation of UnityEngine.WaitUntil.</div><div class="ttdef"><b>Definition</b> Coroutine.hpp:88</div></div>
+<div class="ttc" id="astructBNM_1_1Image_html"><div class="ttname"><a href="structBNM_1_1Image.html">BNM::Image</a></div><div class="ttdoc">Class for working with il2cpp images.</div><div class="ttdef"><b>Definition</b> Image.hpp:19</div></div>
+<div class="ttc" id="astructBNM_1_1Method_html"><div class="ttname"><a href="structBNM_1_1Method.html">BNM::Method</a></div><div class="ttdoc">Typed class for working with il2cpp methods.</div><div class="ttdef"><b>Definition</b> Method.hpp:20</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1MonoBehaviour_html"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1MonoBehaviour.html">BNM::UnityEngine::MonoBehaviour</a></div><div class="ttdoc">UnityEngine.MonoBehaviour implementation.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:72</div></div>
+<div class="ttc" id="astructBNM_1_1UnityEngine_1_1Object_html"><div class="ttname"><a href="structBNM_1_1UnityEngine_1_1Object.html">BNM::UnityEngine::Object</a></div><div class="ttdoc">UnityEngine.Object implementation.</div><div class="ttdef"><b>Definition</b> UnityStructures.hpp:33</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

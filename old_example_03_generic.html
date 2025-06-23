@@ -108,7 +108,69 @@ $(function(){initNavTree('old_example_03_generic.html',''); initResizable(true);
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to work with generic classes and methods.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/Class.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Method.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_03() {</div>
+<div class="line">    <span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceBNM.html">BNM</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ---------------------------------------------------- Generic methods ----------------------------------------------------</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> <span class="keywordtype">object</span> = <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;void *&gt;</a>().ToClass();</div>
+<div class="line"> </div>
+<div class="line">    <span class="keyword">auto</span> gameObject = <a class="code hl_struct" href="structBNM_1_1Class.html">Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;GameObject&quot;</span>), <a class="code hl_struct" href="structBNM_1_1Image.html">Image</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;UnityEngine.CoreModule&quot;</span>)));</div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! There is GameObject class with the generic GetComponent method:</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">      public class GameObject : Object {</span></div>
+<div class="line"><span class="comment">        // ...</span></div>
+<div class="line"><span class="comment">        public T GetComponent&lt;T&gt;() {}</span></div>
+<div class="line"><span class="comment">        // ...</span></div>
+<div class="line"><span class="comment">      }</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// So we get `public T GetComponent&lt;T&gt;() {}`</span></div>
+<div class="line">    <span class="keyword">auto</span> GetComponent = gameObject.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;GetComponent&quot;</span>), 0);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// And so - `public object GetComponent&lt;object&gt;(){}`</span></div>
+<div class="line">    <a class="code hl_struct" href="structBNM_1_1Method.html">Method&lt;void *&gt;</a> GetComponentObject = GetComponent.<a class="code hl_function" href="structBNM_1_1MethodBase.html#a82c26d29a61c7c9c95fe523014d82868">GetGeneric</a>({<span class="keywordtype">object</span>});</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Let&#39;s check results by getting address of method</span></div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;GameObject::GetComponent&lt;T&gt;: 0x%lX&quot;</span>, (BNM_PTR)BNM::Utils::OffsetInLib((<span class="keywordtype">void</span> *)GetComponent.GetOffset()));</div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;GameObject::GetComponent&lt;object&gt;: 0x%lX&quot;</span>, (BNM_PTR)BNM::Utils::OffsetInLib((<span class="keywordtype">void</span> *)GetComponentObject.<a class="code hl_function" href="structBNM_1_1MethodBase.html#ac560f0bcab1dd64a0ac81316ab27b66e">GetOffset</a>()));</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// ---------------------------------------------------- Generic классы (classes) ----------------------------------------------------</span></div>
+<div class="line"><span class="comment"></span> </div>
+<div class="line"><span class="comment">    //! Let&#39;s analyze getting of generic classes in the code from example 02:</span></div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">    namespace System.Collections.Generic</span></div>
+<div class="line"><span class="comment">    {</span></div>
+<div class="line"><span class="comment">      public class Dictionary&lt;TKey, TValue&gt; : ... {}</span></div>
+<div class="line"><span class="comment">    }</span></div>
+<div class="line"><span class="comment">    */</span></div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// To find a type with &lt;T1, T2, T3, ..., Tx&gt;, you need to search for &#39;TypeName`(number of parameters in &lt;&gt;)&quot;</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// So we get `Dictionary&lt;TKey, TValue&gt;`. Since the Dictionary class has two genetic types, then after &#39;`&#39; we write &#39;2&#39;</span></div>
+<div class="line">    <span class="keyword">auto</span> dictionaryClass = <a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;System.Collections.Generic&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;Dictionary`2&quot;</span>), <a class="code hl_struct" href="structBNM_1_1Image.html">BNM::Image</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;mscorlib.dll&quot;</span>)));</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// And so - `Dictionary&lt;int, int&gt;`</span></div>
+<div class="line">    <span class="keyword">auto</span> dictionary_int_int_Class = dictionaryClass.GetGeneric({<a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>(), <a class="code hl_function" href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get&lt;int&gt;</a>()});</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Let&#39;s check the results using the address of the Add method as an example</span></div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;Dictionary&lt;TKey, TValue&gt;::Add: 0x%lX&quot;</span>, (BNM_PTR)BNM::Utils::OffsetInLib((<span class="keywordtype">void</span> *)dictionaryClass.GetMethod(<span class="stringliteral">&quot;Add&quot;</span>, 2).GetOffset()));</div>
+<div class="line">    BNM_LOG_INFO(<span class="stringliteral">&quot;Dictionary&lt;int, int&gt;::Add: 0x%lX&quot;</span>, (BNM_PTR)BNM::Utils::OffsetInLib((<span class="keywordtype">void</span> *)dictionary_int_int_Class.GetMethod(<span class="stringliteral">&quot;Add&quot;</span>, 2).GetOffset()));</div>
+<div class="line">}</div>
+<div class="ttc" id="anamespaceBNM_1_1Defaults_html_ab84fa6c8e959333e8a2ef3eb262a7848"><div class="ttname"><a href="namespaceBNM_1_1Defaults.html#ab84fa6c8e959333e8a2ef3eb262a7848">BNM::Defaults::Get</a></div><div class="ttdeci">constexpr DefaultTypeRef Get()</div><div class="ttdoc">Method that helps to get il2cpp class type from C++ and BNM types.</div><div class="ttdef"><b>Definition</b> Defaults.hpp:132</div></div>
+<div class="ttc" id="anamespaceBNM_html"><div class="ttname"><a href="namespaceBNM.html">BNM</a></div><div class="ttdoc">Main BNM namespace.</div><div class="ttdef"><b>Definition</b> BasicMonoStructures.hpp:14</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1Image_html"><div class="ttname"><a href="structBNM_1_1Image.html">BNM::Image</a></div><div class="ttdoc">Class for working with il2cpp images.</div><div class="ttdef"><b>Definition</b> Image.hpp:19</div></div>
+<div class="ttc" id="astructBNM_1_1MethodBase_html_a82c26d29a61c7c9c95fe523014d82868"><div class="ttname"><a href="structBNM_1_1MethodBase.html#a82c26d29a61c7c9c95fe523014d82868">BNM::MethodBase::GetGeneric</a></div><div class="ttdeci">MethodBase GetGeneric(const std::initializer_list&lt; CompileTimeClass &gt; &amp;templateTypes) const</div><div class="ttdoc">Get typed version of current generic method.</div></div>
+<div class="ttc" id="astructBNM_1_1MethodBase_html_ac560f0bcab1dd64a0ac81316ab27b66e"><div class="ttname"><a href="structBNM_1_1MethodBase.html#ac560f0bcab1dd64a0ac81316ab27b66e">BNM::MethodBase::GetOffset</a></div><div class="ttdeci">BNM_PTR GetOffset() const</div><div class="ttdoc">Get method offset.</div><div class="ttdef"><b>Definition</b> MethodBase.hpp:60</div></div>
+<div class="ttc" id="astructBNM_1_1Method_html"><div class="ttname"><a href="structBNM_1_1Method.html">BNM::Method</a></div><div class="ttdoc">Typed class for working with il2cpp methods.</div><div class="ttdef"><b>Definition</b> Method.hpp:20</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">

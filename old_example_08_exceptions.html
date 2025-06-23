@@ -108,7 +108,58 @@ $(function(){initNavTree('old_example_08_exceptions.html',''); initResizable(tru
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>It shows how to handle il2cpp exceptions.</p>
-<div class="fragment"></div><!-- fragment --> </div></div><!-- contents -->
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;BNM/Exceptions.hpp&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;BNM/Method.hpp&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// For example game has &quot;danger&quot; method, that can throw C# exception</span></div>
+<div class="line"><span class="comment">// And we want to catch it, to continue code execution even if method thrown exception</span></div>
+<div class="line"><a class="code hl_struct" href="structBNM_1_1Method.html">BNM::Method&lt;int&gt;</a> DangerMethod;</div>
+<div class="line"> </div>
+<div class="line">void (*old_Start)(<span class="keywordtype">void</span> *);</div>
+<div class="line"><span class="keywordtype">void</span> Start(<span class="keywordtype">void</span> *instance) {</div>
+<div class="line">    old_Start(instance);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordtype">int</span> result;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// To catch you can use defines</span></div>
+<div class="line">    <a class="code hl_define" href="group__EXCEPTIONS__MACRO.html#gaec4e3fcbf53f621323421767987da9c4">BNM_try</a></div>
+<div class="line">        result = DangerMethod[instance]();</div>
+<div class="line">    <a class="code hl_define" href="group__EXCEPTIONS__MACRO.html#ga1ddeb92056e144c0cb71f0c4fff9f0b2">BNM_catch</a>(exception <span class="comment">/*exception object name*/</span>) <span class="comment">// You can skip catch block</span></div>
+<div class="line">        <span class="keyword">auto</span> className = exception.ClassName();</div>
+<div class="line">        <span class="keyword">auto</span> message = exception.Message();</div>
+<div class="line">        BNM_LOG_WARN(<span class="stringliteral">&quot;DangerMethod returned exception (in try catch) [%s]: %s&quot;</span>, className.c_str(), message.c_str());</div>
+<div class="line">        result = -1;</div>
+<div class="line">    <a class="code hl_define" href="group__EXCEPTIONS__MACRO.html#gac7d03ab36a50067f36a84ba64c198239">BNM_end_try</a></div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">// Or you can use BNM::TryInvoke:</span></div>
+<div class="line">    <span class="keyword">auto</span> exception = <a class="code hl_function" href="namespaceBNM.html#a0b62e59b6c773d58e3c8d4831b3c0d9f">BNM::TryInvoke</a>(<span class="comment">/*You can pass anything without args and returning void (lambdas, methods) */</span> [&amp;]{</div>
+<div class="line">        result = DangerMethod[instance]();</div>
+<div class="line">    });</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (exception.IsValid()) {</div>
+<div class="line">        <span class="keyword">auto</span> className = exception.ClassName();</div>
+<div class="line">        <span class="keyword">auto</span> message = exception.Message();</div>
+<div class="line">        BNM_LOG_WARN(<span class="stringliteral">&quot;DangerMethod returned exception (in TryInvoke) [%s]: %s&quot;</span>, className.c_str(), message.c_str());</div>
+<div class="line">        result = -1;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (result == -1) {<span class="comment">/*Do sth*/</span>}</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> OnLoaded_Example_08() {</div>
+<div class="line">    <span class="keyword">auto</span> cls = <a class="code hl_struct" href="structBNM_1_1Class.html">BNM::Class</a>(BNM_OBFUSCATE(<span class="stringliteral">&quot;Example&quot;</span>), BNM_OBFUSCATE(<span class="stringliteral">&quot;Example&quot;</span>));</div>
+<div class="line">    DangerMethod = cls.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;DangerMethod&quot;</span>));</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="namespaceBNM.html#a872e4ec758db7d996d41e7238f9dea06">BNM::InvokeHook</a>(cls.GetMethod(BNM_OBFUSCATE(<span class="stringliteral">&quot;Start&quot;</span>)), Start, old_Start);</div>
+<div class="line">}</div>
+<div class="ttc" id="agroup__EXCEPTIONS__MACRO_html_ga1ddeb92056e144c0cb71f0c4fff9f0b2"><div class="ttname"><a href="group__EXCEPTIONS__MACRO.html#ga1ddeb92056e144c0cb71f0c4fff9f0b2">BNM_catch</a></div><div class="ttdeci">#define BNM_catch(ex)</div><div class="ttdoc">Define block to handle exceptions.</div><div class="ttdef"><b>Definition</b> Exceptions.hpp:100</div></div>
+<div class="ttc" id="agroup__EXCEPTIONS__MACRO_html_gac7d03ab36a50067f36a84ba64c198239"><div class="ttname"><a href="group__EXCEPTIONS__MACRO.html#gac7d03ab36a50067f36a84ba64c198239">BNM_end_try</a></div><div class="ttdeci">#define BNM_end_try</div><div class="ttdoc">End BNM_try or BNM_try&amp;BNM_catch blocks.</div><div class="ttdef"><b>Definition</b> Exceptions.hpp:108</div></div>
+<div class="ttc" id="agroup__EXCEPTIONS__MACRO_html_gaec4e3fcbf53f621323421767987da9c4"><div class="ttname"><a href="group__EXCEPTIONS__MACRO.html#gaec4e3fcbf53f621323421767987da9c4">BNM_try</a></div><div class="ttdeci">#define BNM_try</div><div class="ttdoc">Define danger code block.</div><div class="ttdef"><b>Definition</b> Exceptions.hpp:90</div></div>
+<div class="ttc" id="anamespaceBNM_html_a0b62e59b6c773d58e3c8d4831b3c0d9f"><div class="ttname"><a href="namespaceBNM.html#a0b62e59b6c773d58e3c8d4831b3c0d9f">BNM::TryInvoke</a></div><div class="ttdeci">Exception TryInvoke(const std::function&lt; void()&gt; &amp;func)</div><div class="ttdoc">Helper function for catching il2cpp errors.</div></div>
+<div class="ttc" id="anamespaceBNM_html_a872e4ec758db7d996d41e7238f9dea06"><div class="ttname"><a href="namespaceBNM.html#a872e4ec758db7d996d41e7238f9dea06">BNM::InvokeHook</a></div><div class="ttdeci">bool InvokeHook(const BNM::MethodBase &amp;targetMethod, T_NEW newMet, T_OLD &amp;oldMet)</div><div class="ttdoc">Hook method by changing MethodInfo.</div><div class="ttdef"><b>Definition</b> MethodBase.hpp:166</div></div>
+<div class="ttc" id="astructBNM_1_1Class_html"><div class="ttname"><a href="structBNM_1_1Class.html">BNM::Class</a></div><div class="ttdoc">Class for working with il2cpp classes.</div><div class="ttdef"><b>Definition</b> Class.hpp:29</div></div>
+<div class="ttc" id="astructBNM_1_1Method_html"><div class="ttname"><a href="structBNM_1_1Method.html">BNM::Method</a></div><div class="ttdoc">Typed class for working with il2cpp methods.</div><div class="ttdef"><b>Definition</b> Method.hpp:20</div></div>
+</div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->
 </div><!-- doc-content -->
 <div id="nav-path">
