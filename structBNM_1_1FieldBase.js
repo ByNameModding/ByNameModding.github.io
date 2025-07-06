@@ -7,6 +7,8 @@ var structBNM_1_1FieldBase =
     [ "GetFieldPointer", "structBNM_1_1FieldBase.html#a564fffe6b51f48e0b5550531b534ad9b", null ],
     [ "GetInfo", "structBNM_1_1FieldBase.html#a0fc371ec98a459ee103b435c50d0dd6f", null ],
     [ "GetOffset", "structBNM_1_1FieldBase.html#a0cb5b9232dc4e9910daa1d62e0d955b1", null ],
+    [ "GetParentClass", "structBNM_1_1FieldBase.html#ad069b61359e1710c0d7ed0f23c5bbb50", null ],
+    [ "GetType", "structBNM_1_1FieldBase.html#aee816656eac4404bf23d97ce5350a858", null ],
     [ "IsValid", "structBNM_1_1FieldBase.html#a57e72b2b3badc6b1a7e45098d2754686", null ],
     [ "operator[]", "structBNM_1_1FieldBase.html#a500fe7c4b6ad9b2a312a81f2b8a21a8a", null ],
     [ "operator[]", "structBNM_1_1FieldBase.html#a2010c8d86d2159fb3915c237884f6696", null ],

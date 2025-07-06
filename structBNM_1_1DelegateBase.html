@@ -121,9 +121,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a456d48c8ccff186911b829b820eacc17" id="r_a456d48c8ccff186911b829b820eacc17"><td class="memItemLeft" align="right" valign="top">IL2CPP::Il2CppObject *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a456d48c8ccff186911b829b820eacc17">GetInstance</a> () const</td></tr>
 <tr class="memdesc:a456d48c8ccff186911b829b820eacc17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get instance of delegate.  <br /></td></tr>
 <tr class="separator:a456d48c8ccff186911b829b820eacc17"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abe94e4cb2f3ab748ddbf0e84cd93860c" id="r_abe94e4cb2f3ab748ddbf0e84cd93860c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1MethodBase.html">MethodBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#abe94e4cb2f3ab748ddbf0e84cd93860c">GetMethod</a> () const</td></tr>
-<tr class="memdesc:abe94e4cb2f3ab748ddbf0e84cd93860c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get method of delegate.  <br /></td></tr>
-<tr class="separator:abe94e4cb2f3ab748ddbf0e84cd93860c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d12535ca5cfaeef9ea28ca5ced4700" id="r_ac3d12535ca5cfaeef9ea28ca5ced4700"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1MethodBase.html">BNM::MethodBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac3d12535ca5cfaeef9ea28ca5ced4700">GetMethod</a> () const</td></tr>
+<tr class="memdesc:ac3d12535ca5cfaeef9ea28ca5ced4700"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get method of delegate.  <br /></td></tr>
+<tr class="separator:ac3d12535ca5cfaeef9ea28ca5ced4700"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c2f8f2548b7254194782c90283b5272" id="r_a5c2f8f2548b7254194782c90283b5272"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1DelegateBase.html">DelegateBase</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5c2f8f2548b7254194782c90283b5272">Create</a> (<a class="el" href="structBNM_1_1MethodBase.html">BNM::MethodBase</a> method)</td></tr>
+<tr class="memdesc:a5c2f8f2548b7254194782c90283b5272"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create delegate from method.  <br /></td></tr>
+<tr class="separator:a5c2f8f2548b7254194782c90283b5272"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5a1975def4b1151942f04d0cf3547f3" id="r_ac5a1975def4b1151942f04d0cf3547f3"><td class="memItemLeft" align="right" valign="top"><a id="ac5a1975def4b1151942f04d0cf3547f3" name="ac5a1975def4b1151942f04d0cf3547f3"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsValid</b> () const noexcept</td></tr>
 <tr class="memdesc:ac5a1975def4b1151942f04d0cf3547f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if delegate is valid. <br /></td></tr>
@@ -141,6 +144,32 @@ template&lt;typename NewRet&gt; </td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Wrapper of Il2CppDelegate. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a5c2f8f2548b7254194782c90283b5272" name="a5c2f8f2548b7254194782c90283b5272"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c2f8f2548b7254194782c90283b5272">&#9670;&#160;</a></span>Create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1DelegateBase.html">DelegateBase</a> * BNM::DelegateBase::Create </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structBNM_1_1MethodBase.html">BNM::MethodBase</a></td>          <td class="paramname"><span class="paramname"><em>method</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create delegate from method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">method</td><td><a class="el" href="structBNM_1_1Method.html" title="Typed class for working with il2cpp methods.">Method</a> that will be used in new delegate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New <a class="el" href="structBNM_1_1DelegateBase.html" title="Wrapper of Il2CppDelegate.">DelegateBase</a> </dd></dl>
+
+</div>
+</div>
 <a id="a456d48c8ccff186911b829b820eacc17" name="a456d48c8ccff186911b829b820eacc17"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a456d48c8ccff186911b829b820eacc17">&#9670;&#160;</a></span>GetInstance()</h2>
 
@@ -169,8 +198,8 @@ template&lt;typename NewRet&gt; </td></tr>
 
 </div>
 </div>
-<a id="abe94e4cb2f3ab748ddbf0e84cd93860c" name="abe94e4cb2f3ab748ddbf0e84cd93860c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abe94e4cb2f3ab748ddbf0e84cd93860c">&#9670;&#160;</a></span>GetMethod()</h2>
+<a id="ac3d12535ca5cfaeef9ea28ca5ced4700" name="ac3d12535ca5cfaeef9ea28ca5ced4700"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d12535ca5cfaeef9ea28ca5ced4700">&#9670;&#160;</a></span>GetMethod()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +208,7 @@ template&lt;typename NewRet&gt; </td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structBNM_1_1MethodBase.html">MethodBase</a> BNM::DelegateBase::GetMethod </td>
+          <td class="memname"><a class="el" href="structBNM_1_1MethodBase.html">BNM::MethodBase</a> BNM::DelegateBase::GetMethod </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>

@@ -4,6 +4,7 @@ var structBNM_1_1EventBase =
     [ "EventBase", "structBNM_1_1EventBase.html#a41a434b9f972de647674a9f544471d0e", null ],
     [ "EventBase", "structBNM_1_1EventBase.html#a0edf92166e27ef9a710824a304b61381", null ],
     [ "cast", "structBNM_1_1EventBase.html#a340c0d8971d11fbb29ab2e9de761b117", null ],
+    [ "GetParentClass", "structBNM_1_1EventBase.html#a325344f16f8476f9a9d9ab11f991dea6", null ],
     [ "IsValid", "structBNM_1_1EventBase.html#ab08b61429963970093b9a194c68364f1", null ],
     [ "operator[]", "structBNM_1_1EventBase.html#a30a8aba0c9924051e0b8539eae5f79c9", null ],
     [ "operator[]", "structBNM_1_1EventBase.html#ae63d26380f31fba82376a660f1a18a61", null ],

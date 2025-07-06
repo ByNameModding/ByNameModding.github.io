@@ -94,8 +94,8 @@ var NAVTREEINDEX =
 [
 "AdvancedAPI.html",
 "structBNM_1_1Class.html#aba5080f04c81a05e6d95759805641237",
-"structBNM_1_1MethodBase.html",
-"structBNM_1_1UnityEngine_1_1InvokableCall.html"
+"structBNM_1_1Method.html#a999090f33651f97c0efe4f034102bb1b",
+"structBNM_1_1Structures_1_1Unity_1_1Quaternion.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

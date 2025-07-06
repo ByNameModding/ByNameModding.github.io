@@ -147,6 +147,12 @@ constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>MethodBase</b> (
 <tr class="memitem:ab3b49d6ce0f440b1941d560ead1ea81d" id="r_ab3b49d6ce0f440b1941d560ead1ea81d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1MethodBase.html">MethodBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3b49d6ce0f440b1941d560ead1ea81d">GetOverride</a> () const</td></tr>
 <tr class="memdesc:ab3b49d6ce0f440b1941d560ead1ea81d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get overridden method of current virtual method.  <br /></td></tr>
 <tr class="separator:ab3b49d6ce0f440b1941d560ead1ea81d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a731a3f2673e9fa835ad329f56990c280" id="r_a731a3f2673e9fa835ad329f56990c280"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a731a3f2673e9fa835ad329f56990c280">GetReturnType</a> () const</td></tr>
+<tr class="memdesc:a731a3f2673e9fa835ad329f56990c280"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get return type of method.  <br /></td></tr>
+<tr class="separator:a731a3f2673e9fa835ad329f56990c280"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a784a87748e866374a207cf694eccd408" id="r_a784a87748e866374a207cf694eccd408"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a784a87748e866374a207cf694eccd408">GetParentClass</a> () const</td></tr>
+<tr class="memdesc:a784a87748e866374a207cf694eccd408"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get class that contains this method.  <br /></td></tr>
+<tr class="separator:a784a87748e866374a207cf694eccd408"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acb9439f0d9f227a843a834baff54226b" id="r_acb9439f0d9f227a843a834baff54226b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1MethodBase.html">MethodBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb9439f0d9f227a843a834baff54226b">operator[]</a> (void *instance)</td></tr>
 <tr class="memdesc:acb9439f0d9f227a843a834baff54226b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator for setting instance.  <br /></td></tr>
 <tr class="separator:acb9439f0d9f227a843a834baff54226b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -364,6 +370,62 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_isVirtual</b>: 1 
 
 <p>Get overridden method of current virtual method. </p>
 <dl class="section return"><dt>Returns</dt><dd>Overridden method if method is valid and virtual, otherwise empty method. </dd></dl>
+
+</div>
+</div>
+<a id="a784a87748e866374a207cf694eccd408" name="a784a87748e866374a207cf694eccd408"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a784a87748e866374a207cf694eccd408">&#9670;&#160;</a></span>GetParentClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a> BNM::MethodBase::GetParentClass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get class that contains this method. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1Class.html" title="Class for working with il2cpp classes.">BNM::Class</a> of method's class </dd></dl>
+
+</div>
+</div>
+<a id="a731a3f2673e9fa835ad329f56990c280" name="a731a3f2673e9fa835ad329f56990c280"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a731a3f2673e9fa835ad329f56990c280">&#9670;&#160;</a></span>GetReturnType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a> BNM::MethodBase::GetReturnType </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get return type of method. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1Class.html" title="Class for working with il2cpp classes.">BNM::Class</a> of method's return type </dd></dl>
 
 </div>
 </div>

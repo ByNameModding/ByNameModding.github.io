@@ -33,6 +33,7 @@ var namespaceBNM =
     [ "Exception", "structBNM_1_1Exception.html", "structBNM_1_1Exception" ],
     [ "Field", "structBNM_1_1Field.html", "structBNM_1_1Field" ],
     [ "FieldBase", "structBNM_1_1FieldBase.html", "structBNM_1_1FieldBase" ],
+    [ "ForwardList", "structBNM_1_1ForwardList.html", "structBNM_1_1ForwardList" ],
     [ "Image", "structBNM_1_1Image.html", "structBNM_1_1Image" ],
     [ "Method", "structBNM_1_1Method.html", "structBNM_1_1Method" ],
     [ "MethodBase", "structBNM_1_1MethodBase.html", "structBNM_1_1MethodBase" ],

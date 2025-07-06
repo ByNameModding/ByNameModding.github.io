@@ -141,6 +141,12 @@ constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>FieldBase</b> ()
 <tr class="memitem:a564fffe6b51f48e0b5550531b534ad9b" id="r_a564fffe6b51f48e0b5550531b534ad9b"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a564fffe6b51f48e0b5550531b534ad9b">GetFieldPointer</a> () const</td></tr>
 <tr class="memdesc:a564fffe6b51f48e0b5550531b534ad9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get field pointer.  <br /></td></tr>
 <tr class="separator:a564fffe6b51f48e0b5550531b534ad9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee816656eac4404bf23d97ce5350a858" id="r_aee816656eac4404bf23d97ce5350a858"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aee816656eac4404bf23d97ce5350a858">GetType</a> () const</td></tr>
+<tr class="memdesc:aee816656eac4404bf23d97ce5350a858"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get field type.  <br /></td></tr>
+<tr class="separator:aee816656eac4404bf23d97ce5350a858"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad069b61359e1710c0d7ed0f23c5bbb50" id="r_ad069b61359e1710c0d7ed0f23c5bbb50"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad069b61359e1710c0d7ed0f23c5bbb50">GetParentClass</a> () const</td></tr>
+<tr class="memdesc:ad069b61359e1710c0d7ed0f23c5bbb50"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get class that contains this field.  <br /></td></tr>
+<tr class="separator:ad069b61359e1710c0d7ed0f23c5bbb50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8470ed89e911aafb8f1308c51b96a659" id="r_a8470ed89e911aafb8f1308c51b96a659"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1FieldBase.html">FieldBase</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8470ed89e911aafb8f1308c51b96a659">operator[]</a> (void *instance)</td></tr>
 <tr class="memdesc:a8470ed89e911aafb8f1308c51b96a659"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator for setting instance.  <br /></td></tr>
 <tr class="separator:a8470ed89e911aafb8f1308c51b96a659"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -179,6 +185,9 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_isThreadStatic</b
 <tr class="memitem:ae2ce4fba102e47883e0dbad67cd6377a" id="r_ae2ce4fba102e47883e0dbad67cd6377a"><td class="memItemLeft" align="right" valign="top"><a id="ae2ce4fba102e47883e0dbad67cd6377a" name="ae2ce4fba102e47883e0dbad67cd6377a"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_isInStruct</b>: 1 = false</td></tr>
 <tr class="separator:ae2ce4fba102e47883e0dbad67cd6377a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a56cf51bb62c4440dc995848b73ba8e" id="r_a2a56cf51bb62c4440dc995848b73ba8e"><td class="memItemLeft" align="right" valign="top"><a id="a2a56cf51bb62c4440dc995848b73ba8e" name="a2a56cf51bb62c4440dc995848b73ba8e"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_isConst</b>: 1 = false</td></tr>
+<tr class="separator:a2a56cf51bb62c4440dc995848b73ba8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="structBNM_1_1Class.html" title="Class for working with il2cpp classes.">Class</a> base for working with il2cpp fields. </p>
@@ -326,6 +335,62 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>_isInStruct</b>: 1
 
 <p>Get field offset. </p>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1Field.html" title="Typed class for working with il2cpp fields.">Field</a> offset if field is valid, otherwise zero. </dd></dl>
+
+</div>
+</div>
+<a id="ad069b61359e1710c0d7ed0f23c5bbb50" name="ad069b61359e1710c0d7ed0f23c5bbb50"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad069b61359e1710c0d7ed0f23c5bbb50">&#9670;&#160;</a></span>GetParentClass()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a> BNM::FieldBase::GetParentClass </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get class that contains this field. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1Class.html" title="Class for working with il2cpp classes.">BNM::Class</a> of field's class </dd></dl>
+
+</div>
+</div>
+<a id="aee816656eac4404bf23d97ce5350a858" name="aee816656eac4404bf23d97ce5350a858"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aee816656eac4404bf23d97ce5350a858">&#9670;&#160;</a></span>GetType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a> BNM::FieldBase::GetType </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get field type. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1Class.html" title="Class for working with il2cpp classes.">BNM::Class</a> of field's type </dd></dl>
 
 </div>
 </div>

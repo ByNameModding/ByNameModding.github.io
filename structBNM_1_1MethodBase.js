@@ -9,6 +9,8 @@ var structBNM_1_1MethodBase =
     [ "GetInfo", "structBNM_1_1MethodBase.html#a83935a51ede6e0fa64f3b717e4202a1b", null ],
     [ "GetOffset", "structBNM_1_1MethodBase.html#ac560f0bcab1dd64a0ac81316ab27b66e", null ],
     [ "GetOverride", "structBNM_1_1MethodBase.html#ab3b49d6ce0f440b1941d560ead1ea81d", null ],
+    [ "GetParentClass", "structBNM_1_1MethodBase.html#a784a87748e866374a207cf694eccd408", null ],
+    [ "GetReturnType", "structBNM_1_1MethodBase.html#a731a3f2673e9fa835ad329f56990c280", null ],
     [ "IsValid", "structBNM_1_1MethodBase.html#ae946efd546d7dcd7844bd67d217e4b1f", null ],
     [ "operator[]", "structBNM_1_1MethodBase.html#afa3fea450940ce40c4a60f68243e2260", null ],
     [ "operator[]", "structBNM_1_1MethodBase.html#a7fa1e8c3444c36e1c5a5e27513fe97d0", null ],

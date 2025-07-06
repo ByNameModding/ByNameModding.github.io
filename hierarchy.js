@@ -8,6 +8,7 @@ var hierarchy =
     [ "BNM::Utils::DataIterator< T >", "structBNM_1_1Utils_1_1DataIterator.html", null ],
     [ "BNM::Structures::Mono::decimal", "structBNM_1_1Structures_1_1Mono_1_1decimal.html", null ],
     [ "BNM::Defaults::DefaultTypeRef", "structBNM_1_1Defaults_1_1DefaultTypeRef.html", null ],
+    [ "BNM::ForwardList< T >::Element", "structBNM_1_1ForwardList_1_1Element.html", null ],
     [ "BNM::Structures::Mono::Dictionary< TKey, TValue >::Entry", "structBNM_1_1Structures_1_1Mono_1_1Dictionary_1_1Entry.html", null ],
     [ "BNM::Structures::Mono::List< T >::Enumerator", "structBNM_1_1Structures_1_1Mono_1_1List_1_1Enumerator.html", null ],
     [ "BNM::EventBase", "structBNM_1_1EventBase.html", [
@@ -17,6 +18,7 @@ var hierarchy =
     [ "BNM::FieldBase", "structBNM_1_1FieldBase.html", [
       [ "BNM::Field< T >", "structBNM_1_1Field.html", null ]
     ] ],
+    [ "BNM::ForwardList< T >", "structBNM_1_1ForwardList.html", null ],
     [ "BNM::Structures::Unity::FrustumPlanes", "structBNM_1_1Structures_1_1Unity_1_1FrustumPlanes.html", null ],
     [ "IL2CPP::Il2CppDelegate", null, [
       [ "BNM::DelegateBase", "structBNM_1_1DelegateBase.html", [

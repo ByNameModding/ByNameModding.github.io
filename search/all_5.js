@@ -2,7 +2,7 @@ var searchData=
 [
   ['action_0',['Action',['../structBNM_1_1Structures_1_1Mono_1_1Action.html',1,'BNM::Structures::Mono']]],
   ['action_20unityaction_1',['- Action/UnityAction',['../Basics.html#mono_action_UnityMono',1,'']]],
-  ['add_2',['Add',['../structBNM_1_1Structures_1_1Mono_1_1List.html#a03fbff266e4631e2255e3367fcca2f62',1,'BNM::Structures::Mono::List::Add()'],['../structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ad236c29e712fd546088a6880e2b7f769',1,'BNM::Structures::Mono::Dictionary::Add()'],['../structBNM_1_1MulticastDelegateBase.html#a247b062b9050f8f659ae54725a8dd236',1,'BNM::MulticastDelegateBase::Add()'],['../structBNM_1_1Event.html#a389f653da5698d9b0e69e3c1776e66e5',1,'BNM::Event::Add()']]],
+  ['add_2',['Add',['../structBNM_1_1Structures_1_1Mono_1_1List.html#a03fbff266e4631e2255e3367fcca2f62',1,'BNM::Structures::Mono::List::Add()'],['../structBNM_1_1Structures_1_1Mono_1_1Dictionary.html#ad236c29e712fd546088a6880e2b7f769',1,'BNM::Structures::Mono::Dictionary::Add()'],['../structBNM_1_1MulticastDelegateBase.html#a247b062b9050f8f659ae54725a8dd236',1,'BNM::MulticastDelegateBase::Add(DelegateBase *delegate)'],['../structBNM_1_1MulticastDelegateBase.html#a5b577acf868fcafa52d0368b4f2b3e2e',1,'BNM::MulticastDelegateBase::Add(BNM::MethodBase method)'],['../structBNM_1_1Event.html#a389f653da5698d9b0e69e3c1776e66e5',1,'BNM::Event::Add()']]],
   ['add_20methods_20to_20class_3',['2. Add methods to class',['../AdvancedAPI.html#addMethods_Ex',1,'']]],
   ['addlistener_4',['AddListener',['../structBNM_1_1UnityEngine_1_1UnityEvent.html#af90e51857803efc09978ad66905bd795',1,'BNM::UnityEngine::UnityEvent']]],
   ['addonloadedevent_5',['AddOnLoadedEvent',['../namespaceBNM_1_1Loading.html#ab48060cfb0526dcffee0740b400c5bab',1,'BNM::Loading']]],
