@@ -1,20 +1,23 @@
 var NAVTREEINDEX1 =
 {
+"structBNM_1_1Class.html#aba5080f04c81a05e6d95759805641237":[7,0,0,9,15],
 "structBNM_1_1Class.html#aba5080f04c81a05e6d95759805641237":[8,0,0,5,15],
+"structBNM_1_1Class.html#acd98ad7183428ae1cac72dba2809bf83":[7,0,0,9,34],
+"structBNM_1_1Class.html#acd98ad7183428ae1cac72dba2809bf83":[8,0,0,5,34],
 "structBNM_1_1Class.html#acfa30142673c70e3faa3ff5ebdb7df16":[7,0,0,9,1],
 "structBNM_1_1Class.html#acfa30142673c70e3faa3ff5ebdb7df16":[8,0,0,5,1],
 "structBNM_1_1Class.html#ad88c5f264265c9cf93a7d27c43ffde2f":[7,0,0,9,18],
 "structBNM_1_1Class.html#ad88c5f264265c9cf93a7d27c43ffde2f":[8,0,0,5,18],
-"structBNM_1_1Class.html#ae61dd802bc987d73bd8f1b7e003a5aeb":[7,0,0,9,41],
-"structBNM_1_1Class.html#ae61dd802bc987d73bd8f1b7e003a5aeb":[8,0,0,5,41],
+"structBNM_1_1Class.html#ae61dd802bc987d73bd8f1b7e003a5aeb":[7,0,0,9,42],
+"structBNM_1_1Class.html#ae61dd802bc987d73bd8f1b7e003a5aeb":[8,0,0,5,42],
 "structBNM_1_1Class.html#aec5e125eefed487ea616b24c5e896d8c":[7,0,0,9,3],
 "structBNM_1_1Class.html#aec5e125eefed487ea616b24c5e896d8c":[8,0,0,5,3],
 "structBNM_1_1Class.html#af063065f3a3b8757c47d7b8f5db94195":[7,0,0,9,30],
 "structBNM_1_1Class.html#af063065f3a3b8757c47d7b8f5db94195":[8,0,0,5,30],
 "structBNM_1_1Class.html#af64879f944e435bff9ac1f7207e3feab":[7,0,0,9,28],
 "structBNM_1_1Class.html#af64879f944e435bff9ac1f7207e3feab":[8,0,0,5,28],
-"structBNM_1_1Class.html#af99fa3b46e42d5a6ea038608db45c010":[7,0,0,9,36],
-"structBNM_1_1Class.html#af99fa3b46e42d5a6ea038608db45c010":[8,0,0,5,36],
+"structBNM_1_1Class.html#af99fa3b46e42d5a6ea038608db45c010":[7,0,0,9,37],
+"structBNM_1_1Class.html#af99fa3b46e42d5a6ea038608db45c010":[8,0,0,5,37],
 "structBNM_1_1CompileTimeClass.html":[7,0,0,10],
 "structBNM_1_1CompileTimeClass.html":[8,0,0,6],
 "structBNM_1_1CompileTimeClass.html#a57f0fddb02ef6592a55218d21b9a12ec":[7,0,0,10,2],
@@ -246,8 +249,5 @@ var NAVTREEINDEX1 =
 "structBNM_1_1Method.html#a4b811397fdf3a064338cc1b7a6c4d91b":[7,0,0,21,9],
 "structBNM_1_1Method.html#a4b811397fdf3a064338cc1b7a6c4d91b":[8,0,0,17,9],
 "structBNM_1_1Method.html#a6d77855dedc5326b83afaddc3f3d364d":[7,0,0,21,10],
-"structBNM_1_1Method.html#a6d77855dedc5326b83afaddc3f3d364d":[8,0,0,17,10],
-"structBNM_1_1Method.html#a7821d6b7ace6f85e908752325a646194":[7,0,0,21,8],
-"structBNM_1_1Method.html#a7821d6b7ace6f85e908752325a646194":[8,0,0,17,8],
-"structBNM_1_1Method.html#a999090f33651f97c0efe4f034102bb1b":[7,0,0,21,6]
+"structBNM_1_1Method.html#a6d77855dedc5326b83afaddc3f3d364d":[8,0,0,17,10]
 };

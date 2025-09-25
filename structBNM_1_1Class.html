@@ -35,7 +35,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign" style="position:relative">
-   <div id="projectname">BNM<span id="projectnumber">&#160;2.5.0</span>
+   <div id="projectname">BNM<span id="projectnumber">&#160;2.5.1</span>
    </div>
   </td>
  </tr>
@@ -171,6 +171,9 @@ constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Class</b> ()=def
 <tr class="memitem:a8f0b4583a79c42ebb710277c1ed80ba9" id="r_a8f0b4583a79c42ebb710277c1ed80ba9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1PropertyBase.html">BNM::PropertyBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f0b4583a79c42ebb710277c1ed80ba9">GetProperty</a> (const std::string_view &amp;name) const</td></tr>
 <tr class="memdesc:a8f0b4583a79c42ebb710277c1ed80ba9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get property by name.  <br /></td></tr>
 <tr class="separator:a8f0b4583a79c42ebb710277c1ed80ba9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd98ad7183428ae1cac72dba2809bf83" id="r_acd98ad7183428ae1cac72dba2809bf83"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1PropertyBase.html">BNM::PropertyBase</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acd98ad7183428ae1cac72dba2809bf83">GetProperty</a> (const std::string_view &amp;name, const <a class="el" href="structBNM_1_1CompileTimeClass.html">BNM::CompileTimeClass</a> &amp;type) const</td></tr>
+<tr class="memdesc:acd98ad7183428ae1cac72dba2809bf83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get property by name and type.  <br /></td></tr>
+<tr class="separator:acd98ad7183428ae1cac72dba2809bf83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4829033a72116c850883c50990d94abd" id="r_a4829033a72116c850883c50990d94abd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Class.html">BNM::Class</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4829033a72116c850883c50990d94abd">GetInnerClass</a> (const std::string_view &amp;name) const</td></tr>
 <tr class="memdesc:a4829033a72116c850883c50990d94abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get inner class by name.  <br /></td></tr>
 <tr class="separator:a4829033a72116c850883c50990d94abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -237,7 +240,7 @@ constexpr&#160;</td><td class="memItemRight" valign="bottom"><b>Class</b> ()=def
 <tr class="memitem:a44c0e5ced721f982f2df3bc1e4936eac"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structBNM_1_1Structures_1_1Mono_1_1List.html">Structures::Mono::List</a>&lt; T &gt; *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a44c0e5ced721f982f2df3bc1e4936eac">NewListBNM</a> () const</td></tr>
 <tr class="memdesc:a44c0e5ced721f982f2df3bc1e4936eac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create list of this type.  <br /></td></tr>
 <tr class="separator:a44c0e5ced721f982f2df3bc1e4936eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f767e12e2ef09d227dbb7a37d3846c9" id="r_a8f767e12e2ef09d227dbb7a37d3846c9"><td class="memTemplParams" colspan="2">template&lt;typename T, typename = std::enable_if&lt;!std::is_pointer&lt;T&gt;::value&gt;&gt; </td></tr>
+<tr class="memitem:a8f767e12e2ef09d227dbb7a37d3846c9" id="r_a8f767e12e2ef09d227dbb7a37d3846c9"><td class="memTemplParams" colspan="2">template&lt;typename T, typename = std::enable_if&lt;!std::is_pointer_v&lt;T&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a8f767e12e2ef09d227dbb7a37d3846c9"><td class="memTemplItemLeft" align="right" valign="top">IL2CPP::Il2CppObject *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="#a8f767e12e2ef09d227dbb7a37d3846c9">BoxObject</a> (T obj) const</td></tr>
 <tr class="memdesc:a8f767e12e2ef09d227dbb7a37d3846c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Box object of this type.  <br /></td></tr>
 <tr class="separator:a8f767e12e2ef09d227dbb7a37d3846c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -513,7 +516,7 @@ BNM::IL2CPP::Il2CppClass *&#160;</td><td class="memItemRight" valign="bottom"><b
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T, typename = std::enable_if&lt;!std::is_pointer&lt;T&gt;::value&gt;&gt; </div>
+template&lt;typename T, typename = std::enable_if&lt;!std::is_pointer_v&lt;T&gt;&gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1315,7 +1318,7 @@ template&lt;typename ... Parameters&gt; </div>
 </div>
 </div>
 <a id="a8f0b4583a79c42ebb710277c1ed80ba9" name="a8f0b4583a79c42ebb710277c1ed80ba9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f0b4583a79c42ebb710277c1ed80ba9">&#9670;&#160;</a></span>GetProperty()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f0b4583a79c42ebb710277c1ed80ba9">&#9670;&#160;</a></span>GetProperty() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1342,6 +1345,46 @@ template&lt;typename ... Parameters&gt; </div>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>Target property name</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="structBNM_1_1PropertyBase.html" title="Class base for working with il2cpp properties.">PropertyBase</a> object </dd></dl>
+
+</div>
+</div>
+<a id="acd98ad7183428ae1cac72dba2809bf83" name="acd98ad7183428ae1cac72dba2809bf83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acd98ad7183428ae1cac72dba2809bf83">&#9670;&#160;</a></span>GetProperty() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structBNM_1_1PropertyBase.html">BNM::PropertyBase</a> BNM::Class::GetProperty </td>
+          <td>(</td>
+          <td class="paramtype">const std::string_view &amp;</td>          <td class="paramname"><span class="paramname"><em>name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structBNM_1_1CompileTimeClass.html">BNM::CompileTimeClass</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>type</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel nodiscard">nodiscard</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get property by name and type. </p>
+<p>Tries to get property using its name. If property isn't found in target class, the code will search property in parents.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>Target property name </td></tr>
+    <tr><td class="paramname">type</td><td>Target property type</td></tr>
   </table>
   </dd>
 </dl>

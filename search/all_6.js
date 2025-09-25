@@ -26,13 +26,14 @@ var searchData=
   ['bnm_5fcustomclass_23',['BNM_CustomClass',['../group__CUSTOM__CLASSES__MACRO.html#ga1e453f6d516e1a44299358007b0bb0cc',1,'ClassesManagement.hpp']]],
   ['bnm_5fcustomfield_24',['BNM_CustomField',['../group__CUSTOM__CLASSES__MACRO.html#ga66a49c67bad6e3a4480c4e16b52cb0ed',1,'ClassesManagement.hpp']]],
   ['bnm_5fcustommethod_25',['BNM_CustomMethod',['../group__CUSTOM__CLASSES__MACRO.html#ga0ae52105161c1941a762a28d626bf34f',1,'ClassesManagement.hpp']]],
-  ['bnm_5fcustommethodmarkasbasichook_26',['BNM_CustomMethodMarkAsBasicHook',['../group__CUSTOM__CLASSES__MACRO.html#ga2051c3aae2b8ff2d9fbca9aa60267d2f',1,'ClassesManagement.hpp']]],
-  ['bnm_5fcustommethodmarkasinvokehook_27',['BNM_CustomMethodMarkAsInvokeHook',['../group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed',1,'ClassesManagement.hpp']]],
-  ['bnm_5fcustommethodskiptypematch_28',['BNM_CustomMethodSkipTypeMatch',['../group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e',1,'ClassesManagement.hpp']]],
-  ['bnm_5fend_5ftry_29',['BNM_end_try',['../group__EXCEPTIONS__MACRO.html#gac7d03ab36a50067f36a84ba64c198239',1,'Exceptions.hpp']]],
-  ['bnm_5ftry_30',['BNM_try',['../group__EXCEPTIONS__MACRO.html#gaec4e3fcbf53f621323421767987da9c4',1,'Exceptions.hpp']]],
-  ['box_31',['Box',['../namespaceBNM_1_1Defaults.html#a3e16f899f01bc5c34a2c40f5176342f3',1,'BNM::Defaults']]],
-  ['boxobject_32',['BoxObject',['../structBNM_1_1Class.html#a8f767e12e2ef09d227dbb7a37d3846c9',1,'BNM::Class']]],
-  ['build_33',['Build',['../structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d',1,'BNM::CompileTimeClassBuilder']]],
-  ['bynamemodding_34',['ByNameModding',['../index.html',1,'']]]
+  ['bnm_5fcustommethodcopyattributes_26',['BNM_CustomMethodCopyAttributes',['../group__CUSTOM__CLASSES__MACRO.html#ga3e5363d9dd2c87e05b860a237c9a65ef',1,'ClassesManagement.hpp']]],
+  ['bnm_5fcustommethodmarkasbasichook_27',['BNM_CustomMethodMarkAsBasicHook',['../group__CUSTOM__CLASSES__MACRO.html#ga2051c3aae2b8ff2d9fbca9aa60267d2f',1,'ClassesManagement.hpp']]],
+  ['bnm_5fcustommethodmarkasinvokehook_28',['BNM_CustomMethodMarkAsInvokeHook',['../group__CUSTOM__CLASSES__MACRO.html#ga418724fa8e84ed50c67dface7221e7ed',1,'ClassesManagement.hpp']]],
+  ['bnm_5fcustommethodskiptypematch_29',['BNM_CustomMethodSkipTypeMatch',['../group__CUSTOM__CLASSES__MACRO.html#ga56d72e38e844cb95c809a58645c8ba1e',1,'ClassesManagement.hpp']]],
+  ['bnm_5fend_5ftry_30',['BNM_end_try',['../group__EXCEPTIONS__MACRO.html#gac7d03ab36a50067f36a84ba64c198239',1,'Exceptions.hpp']]],
+  ['bnm_5ftry_31',['BNM_try',['../group__EXCEPTIONS__MACRO.html#gaec4e3fcbf53f621323421767987da9c4',1,'Exceptions.hpp']]],
+  ['box_32',['Box',['../namespaceBNM_1_1Defaults.html#a3e16f899f01bc5c34a2c40f5176342f3',1,'BNM::Defaults']]],
+  ['boxobject_33',['BoxObject',['../structBNM_1_1Class.html#a8f767e12e2ef09d227dbb7a37d3846c9',1,'BNM::Class']]],
+  ['build_34',['Build',['../structBNM_1_1CompileTimeClassBuilder.html#a9a7477a520fdec34be89a2de3661732d',1,'BNM::CompileTimeClassBuilder']]],
+  ['bynamemodding_35',['ByNameModding',['../index.html',1,'']]]
 ];

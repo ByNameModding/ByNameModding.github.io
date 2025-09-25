@@ -34,6 +34,7 @@ var structBNM_1_1Class =
     [ "GetPointer", "structBNM_1_1Class.html#a66da190d1fb30b38a367cbe533c24286", null ],
     [ "GetProperties", "structBNM_1_1Class.html#a28351bef5f31d48d97561fb53067c29f", null ],
     [ "GetProperty", "structBNM_1_1Class.html#a8f0b4583a79c42ebb710277c1ed80ba9", null ],
+    [ "GetProperty", "structBNM_1_1Class.html#acd98ad7183428ae1cac72dba2809bf83", null ],
     [ "GetReference", "structBNM_1_1Class.html#a17f43a06f7052e569f44ceffe7293948", null ],
     [ "IsValid", "structBNM_1_1Class.html#a16790fefad8faaac45ddc705a145ba34", null ],
     [ "NewArray", "structBNM_1_1Class.html#af99fa3b46e42d5a6ea038608db45c010", null ],
